@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" ng-app="portfolio">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon portfolio</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css' />
+</head>
+<body>
+  <!-- =================   HEADER =================== -->
+  <header>
+    <h1 class="logo">Singolo</h1>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>Services</li>
+        <li>Portfolio</li>
+        <li>About Us</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+  </header>
+  <!-- =================  END HEADER ================= -->
+
+
+
+
+   <!-- =================   HERO / SLIDESHOW =========== -->
+    <section class="inner slideshow">
+      <figure class="slides"><img src="images/assets/slide_1.jpg" alt="slide_1" title="beautiful slide of phones"></figure>
+    </section>
+  <!-- =================  END HERO / SLIDESHOW ========== -->
+
+
+
+
+   <!-- =================   SERVICES =================== -->
+  <section class="inner services">
+    <h2>
+     Our Services
+    </h2>
+    <p>
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, soluta, autem praesentium mollitia harum eum iusto. Ullam, maiores, sed aut consectetur hic explicabo quia iure modi distinctio voluptatem amet quo.
+    </p>
+    <ul class="big_gap col-3">
+      <li>
+        <h3>
+         Lorem ipsum.
+       </h3>
+        <p>
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, quasi explicabo porro fugiat impedit accusantium.
+       </p>
+      </li>
+      <li>
+        <h3>
+         Optio, dignissimos!
+       </h3>
+        <p>
+         Quia, laboriosam, voluptatem dolores veritatis laudantium ullam rerum corporis sapiente illum excepturi fugiat a facilis.
+       </p>
+      </li>
+      <li>
+        <h3>Dignissimos, distinctio!</h3>
+        <p>Ut, repellendus, commodi, ducimus, harum dolorem labore officiis quis illum quia officia perspiciatis cumque aperiam.</p>
+      </li>
+      <li>
+        <h3>Fugit, fugiat.</h3>
+        <p>Reprehenderit, eveniet obcaecati expedita labore laborum inventore numquam odit eius perspiciatis ullam earum ipsam neque!</p>
+      </li>
+      <li>
+        <h3>Aspernatur, quibusdam?</h3>
+        <p>Reprehenderit, aliquid, saepe, possimus, impedit consequuntur tempore esse expedita vel optio placeat veniam dolor perspiciatis.</p>
+      </li>
+      <li>
+        <h3>Laborum, natus?</h3>
+        <p>Deleniti, tenetur quas in vitae quae ratione aperiam inventore laboriosam pariatur reiciendis ullam iusto optio!</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- =================  END SERVICES ================= -->
+
+
+
+
+   <!-- =================   PORTFOLIO =================== -->
+   <section class="inner portfolio">
+     <h2>Portfolio</h2>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, accusantium, nemo sit libero exercitationem obcaecati!</p>
+     <ul class="folio-nav">
+       <li>All</li>
+       <li>Web Design</li>
+       <li>Graphic Design</li>
+       <li>Artwork</li>
+     </ul>
+     <div id="monfolio" class="col-4" ng-controller="dribbleCtrl">
+       <figure ng-repeat="item in folio.shots">
+         <img src="{{item.image_teaser_url}}" alt="" title="{{item.title}}">
+         <figcaption>{{item.title}}</figcaption>
+       </figure> 
+     </div>
+   </section>
+  <!-- =================  END PORTFOLIO ================= -->
+  
+
+
+
+   <!-- =================   ABOUT US =================== -->
+  <!-- h2{About Us}+(p>lipsum30)+(ul>(li>(figure>img)+h3{le nom}+(p>lipsum15)+(div>ul>li{link_$}*4))*3) -->
+  <section class="inner">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, recusandae ea expedita iusto nisi similique veniam facere aliquid corporis accusantium! Fugiat, laudantium iure neque eum quos dolore minus eligendi officiis!</p>
+    <ul class="col-3">
+      <li>
+        <figure>
+          <img src="images/profile/profile4.jpg" alt="">
+        </figure>
+        <h3>le nom</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, recusandae, eligendi neque molestiae odio blanditiis.</p>
+        <div>
+          <ul>
+            <li>link_1</li>
+            <li>link_2</li>
+            <li>link_3</li>
+            <li>link_4</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <figure>
+          <img src="images/profile/profile4.jpg" alt="">
+        </figure>
+        <h3>le nom</h3>
+        <p>Ipsa, molestias, laudantium, recusandae, nobis iusto earum libero inventore autem minima alias quos sapiente et?</p>
+        <div>
+          <ul>
+            <li>link_1</li>
+            <li>link_2</li>
+            <li>link_3</li>
+            <li>link_4</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <figure>
+          <img src="images/profile/profile4.jpg" alt="">
+        </figure>
+        <h3>le nom</h3>
+        <p>Repellendus, distinctio, cupiditate repellat eum provident fugiat commodi! Quia iusto aperiam ut. Qui, magni, amet.</p>
+        <div>
+          <ul>
+            <li>link_1</li>
+            <li>link_2</li>
+            <li>link_3</li>
+            <li>link_4</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </section>
+    <!-- =================  END ABOUT US ================= -->
+    
+    
+    
+    
+     <!-- =================   CONTACT =================== -->
+    <!-- h2{Get a quote}+(p>lipsum30)+div>(form>(input[placeholder="input action"])*3+texarea)+aside>h4{Contact Information}+(p>lipsum30)+ul>(li{infos $})*3 -->
+    
+    <section class="inner contact">
+      <h2>Get a quote</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat necessitatibus quas nostrum doloribus repudiandae nisi tempore? Totam, fugit, aliquid nihil vero quos sequi adipisci quas accusamus suscipit nulla molestias incidunt.</p>
+      <div>
+        <form action="">
+          <input type="text" placeholder="input action">
+          <input type="text" placeholder="input action">
+          <input type="text" placeholder="input action">
+          <texarea></texarea>
+        </form>
+        <aside>
+          <h4>Contact Information</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, dolor rerum quibusdam libero similique reiciendis voluptates dignissimos voluptas omnis perspiciatis iste inventore esse fuga in veniam incidunt sapiente mollitia ad!</p>
+          <ul>
+            <li>infos 1</li>
+            <li>infos 2</li>
+            <li>infos 3</li>
+          </ul>
+        </aside>
+      </div>
+        </section>
+    </section>
+  <!-- =================  END CONTACT ================= -->
+
+
+
+
+   <!-- =================   FOOTER =================== -->
+  <footer>
+    <span>
+      &copy; Copyright 2013 by PSDChat.com
+    </span> 
+    <ul>
+      <li>infos 1</li>
+      <li>infos 2</li>
+      <li>infos 3</li>
+    </ul>
+  </footer>
+  <!-- =================  END FOOTER ================= -->
+
+
+  <!-- =================   JAVASCRIPT =================== -->
+  <script src="script/jquery.js"></script>
+  <script src="folio.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+  <script>
+    // console.log("Folio:", Folio);
+    /**
+     * <figure>
+         <img src="images/thumbnails/img11.jpg" alt="" title="image 11">
+         <figcaption></figcaption>
+       </figure>
+     */
+    // 
+    // 
+
+
+   /*********** Utilisons Angular ******/
+   var players = ["ionuss", "Artua", "seriousron", "anwaltzzz", "yoga"];
+
+   var thisPlayer = Math.floor(Math.random() * (4));
+
+   //alert(thisPlayer);
+
+   var url = "http://api.dribbble.com/players/"+players[thisPlayer]+"/shots?callback=JSON_CALLBACK";
+   angular
+   .module("portfolio", [])
+   .controller("dribbleCtrl", function ($scope, $http) {
+      //$scope.folio = Folio;
+      // console.log("Angular scope folio:", $scope.folio);
+      $scope.player = "Ady Ngom";
+      $http.jsonp(url).
+      success(function(data, status, headers, config) {
+        // this callback will be called asynchronously
+        // when the response is available
+        
+        $scope.folio = data;
+
+        console.log( $scope.folio );
+      }).
+      error(function(data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        console.log("Error:", data);
+      });
+   })
+   ;
+  /************  Angular Fin ***********/
+
+  </script>
+
+
+  <!-- =================   JAVASCRIPT =================== -->
+</body>
+</html>

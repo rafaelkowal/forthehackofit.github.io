@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  line-height: 1.6;
+  background-color: #f2f2f2;
+  color: #767e9e;
+  font-family: "Lato", Helvetica, serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size: 900;
+}
+img {
+  max-width: 100%;
+}
+.big_gap {
+  margin-top: 50px;
+}
+header {
+  background-color: #303441;
+  /*padding: 32px 0;*/
+  padding: 32px 10px 50px 10px;
+  color: #fff;
+  clear: both;
+}
+
+footer {
+  background-color: #303441;
+}
+
+header > nav {
+  float: right;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+.logo {
+  text-indent: 100%;
+  overflow: hidden;
+  width: 115px;
+  height: 20px;
+  background: url('../images/assets/logo.png') no-repeat;
+  display: inline-block;
+  float: left;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}
+
+.inner {
+  padding: 68px 40px;
+}
+.slideshow {
+  background-color: #eb5055;
+}
+.services {
+  background-color: #f2f2f2;
+}
+
+.portfolio {
+  background-color: #303441;
+}
+
+.contact {
+  background-color: #eb5055;
+  color: #fff;
+}
+
+h2 {
+  font-size: 1.875em;
+  margin-bottom: 10px;
+}
+.slides {
+  text-align: center;
+}
+
+.folio-nav {
+  padding: 1%;
+  margin: 20px 0;
+}
+
+.folio-nav > * {
+  margin-right: 20px;
+  padding: 4px 8px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+/********** GRID *********/
+.col-3 > * {
+  width: 33%;
+  display: inline-block;
+  padding: 1%;
+  vertical-align: top;
+}
+
+.col-4 > * {
+  width: 24%;
+  display: inline-block;
+  padding: 1%;
+  vertical-align: top;
+}
+/******* END GRID *******/
+
+#monfolio figure {
+  overflow: hidden;
+}
+
+#monfolio img {
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+#monfolio img:hover {
+  -webkit-transform: scale(1.15) rotate(360deg); 
+}
