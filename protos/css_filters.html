@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>CSS Box filters</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" />
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700&subset=latin,cyrillic-ext" />
+  <style>
+    html, body {width: 100%, height: 100%;}
+    .section {
+      max-width: 1200px;
+      margin: 0 auto 30px; 
+    }
+    html {
+      font-size: 63.5%;
+      font-family: "Roboto Slab", serif;
+    }
+    body {
+      font-size: 1.6rem;
+      line-height: 2.8rem;
+    }
+    .bold,h1,h2,h3,h4,h5,h6 {
+      font-weight: 700;
+    }
+    .light,p,div{
+      font-weight: 300;
+    }
+    ul {list-style: none; padding-left: 0}
+    .tac { text-align: center;}
+    nav li {display: inline-block; width: 175px; text-align: center;}
+    nav li a {display: block; cursor: pointer}
+    .proj .mix {
+      display: none;
+    }
+    .proj { clear: both;}
+    .proj li {display: inline-block; vertical-align: top; position: relative;}
+    .proj li > img {display: block; width: 100%; max-width: 100%}
+    .proj li:before {
+      position: absolute;
+      top: 0;
+      content: attr(data-tooltip);
+      color: #fff;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      text-align: center;
+      display: none;
+    }
+    .proj li:hover:before {
+       display: block;
+    }
+    .work {
+      -webkit-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+      display: block;
+    }
+    .shrink {
+      -webkit-transform: scale(0);
+      width: 0;
+      height: 0;
+    }
+    .grow {
+      -webkit-transform: scale(1);
+      width: 300px;
+      height: 200px;
+    }
+    .graph {
+      width: 90%;
+      height: 30px;
+      background-color: #ccc;
+      border: 1px solid #eee;
+      position: relative;
+    }
+    .graph p {
+      height: 100%;
+      margin: 0;
+      background-color: red;
+      position: relative;
+    }
+    .graph p:after {
+      position: absolute;
+      content: attr(data-percent);
+      color: #fff;
+      font-size: 11px;
+      right: 12px;
+     
+    }
+    .tabs {
+      width: 100%;
+      position: relative;
+    }
+    .tab {
+      float: left;
+      width: 25%;
+    }
+    .tab .title  {
+      text-align: center;
+      
+      cursor: pointer;
+    }
+    .tab .content {
+      display: none;
+    }
+    .tab.active .title {
+      color: red;
+    }
+    .tab.active > .content {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+    /* grid styles */
+    .col {
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+    }
+    .col-4 {
+      width: 25%;
+    }
+    .col-6 {
+      width: 50%;
+    }
+    .col-12 {
+      width: 100%;
+    }
+    figure {
+      margin: 0;
+    }
+    img {
+      max-width: 100%;
+    }
+    .team article {
+      display: inline-block;
+    }
+    .team figure {
+      width: 265px;
+      height: 265px;
+      margin: 0 auto;
+      text-align: center;
+      border: 5px solid red;
+      border-radius: 50%;
+    }
+    .team figure img {
+      border-radius: 50%;
+    }
+    /* media queries */
+    @media only screen and (min-width: 1200px) {
+      .work {
+        width: 25%;
+      }
+    }
+    @media only screen and (max-width: 1199px) {
+      .work {
+        width: 33.333%;
+      }
+    }
+    @media only screen and (max-width: 860px) {
+      .work {
+        width: 50%;
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      .work, .col {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="section">
+      <nav>
+        <ul class="tac">
+          <li><a class="filter" data-filter="all" data-set="work">all</a></li><li><a class="filter" data-filter=".cat_1" data-set="cat_1">cat_1</a></li><li><a class="filter" data-filter=".cat_2" data-set="cat_2">cat_2</a></li><li><a class="filter" data-filter=".cat_3" data-set="cat_3">cat_3</a></li><li><a class="filter" data-filter=".cat_4" data-set="cat_4">cat_4</a></li><li><a class="filter" data-filter=".cat_5" data-set="cat_5">cat_5</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    <div class="section clearfix">
+      <div >
+        <ul class="proj">
+          <li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_1"><img src="http://lorempixel.com/600/400?r=1" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_2"><img src="http://lorempixel.com/600/400?r=2" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_11"><img src="http://lorempixel.com/600/400?r=3" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_4"><img src="http://lorempixel.com/600/400?r=4" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_5"><img src="http://lorempixel.com/600/400?r=5" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_1"><img src="http://lorempixel.com/600/400?r=6" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_2"><img src="http://lorempixel.com/600/400?r=7" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_3"><img src="http://lorempixel.com/600/400?r=8" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_1"><img src="http://lorempixel.com/600/400?r=9" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_5"><img src="http://lorempixel.com/600/400?r=10" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_1"><img src="http://lorempixel.com/600/400?r=11" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_1"><img src="http://lorempixel.com/600/400?r=12" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_3"><img src="http://lorempixel.com/600/400?r=13" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_4"><img src="http://lorempixel.com/600/400?r=14" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_5"><img src="http://lorempixel.com/600/400?r=15" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_4"><img src="http://lorempixel.com/600/400?r=16" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_2"><img src="http://lorempixel.com/600/400?r=17" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_3"><img src="http://lorempixel.com/600/400?r=18" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_4"><img src="http://lorempixel.com/600/400?r=19" alt="Lorem ipsum dolor."></li><li data-tooltip="Lorem ipsum dolor sit." class="work mix cat_5"><img src="http://lorempixel.com/600/400?r=20" alt="Lorem ipsum dolor."></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section">
+      <div class="team col col-12">
+        <article class="col col-4">
+          <figure>
+            <img src="images/portraits_14.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>Jane Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_02.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>James Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_16.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>Jane Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_01.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>James Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_16.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>Jane Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_01.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>James Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_14.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>Jane Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article><article class="col col-4">
+          <figure>
+            <img src="images/portraits_02.jpg" alt="pure awesomeness">
+            <figcaption></figcaption>
+          </figure>
+          <div class="title tac">
+            <h3>James Doe</h3>
+            <h4>Resident Wordpress Guru</h4>
+          </div>
+        </article>
+      </div><div class="skills col col-6">
+        <div class="skill">
+          <h3>Javascript</h3>
+          <div class="graph">
+            <p data-percent="95&#37;"></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>HTML5</h3>
+          <div class="graph">
+            <p data-percent="98&#37;"></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>CSS3</h3>
+          <div class="graph">
+            <p data-percent="96&#37;"></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Photoshop</h3>
+          <div class="graph">
+            <p data-percent="80&#37;"></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Illustrator</h3>
+          <div class="graph">
+            <p data-percent="85&#37;"></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>PHP</h3>
+          <div class="graph">
+            <p data-percent="75&#37;"></p>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Ruby on Rails</h3>
+          <div class="graph">
+            <p data-percent="70&#37;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="tabs">
+        <div class="tab active">
+          <h3 class="title">Tab title 1</h3>
+          <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, sequi, reprehenderit, illo, nostrum nesciunt assumenda velit veniam ad repellat accusamus enim impedit doloribus officiis laboriosam!</div>
+        </div>
+        <div class="tab">
+          <h3 class="title">Tab title 2</h3>
+          <div class="content">Omnis, quia, inventore, nesciunt, ut tempora alias suscipit pariatur mollitia quae reiciendis accusamus fuga incidunt perspiciatis aliquid maiores eveniet laboriosam cumque cupiditate assumenda soluta! Animi.</div>
+        </div>
+        <div class="tab">
+          <h3 class="title">Tab title 3</h3>
+          <div class="content">Ea, dolorum nemo quas aliquid praesentium doloribus dolorem sequi harum architecto repellat saepe reprehenderit consequatur tempore blanditiis eveniet rerum impedit vero maiores laudantium mollitia. Accusantium?</div>
+        </div>
+        <div class="tab">
+          <h3 class="title">Tab title 4</h3>
+          <div class="content">Ducimus, optio, qui illo dolorum facere laboriosam voluptas illum eveniet assumenda neque maxime pariatur unde nostrum ea velit. Placeat ipsum sit labore quam magnam doloribus!</div>
+        </div>
+      </div>
+    </div>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+  <script>
+    $(document).ready( function () {
+      var $navs = $('nav').find('a'),
+          $wrapper = $('.proj').find('li');
+
+      // $navs.on('click', function (evt) {
+      //   evt.preventDefault();
+      //   var _set = $(this).data('set');
+       
+      //   $wrapper.not('.'+ _set).removeClass('grow').hide();
+      //   $wrapper.filter('.'+ _set).show();
+      //   //console.log($wrapper.not('.'+ _set));
+      // });
+      // 
+      $('.proj').mixItUp();
+
+      var $skills = $(".skills").find("p");
+        console.log($skills);
+        $skills.each(function() {
+            //alert($(this).data('percent'));
+            $(this).css({
+              "width": $(this).data('percent')+"%" 
+            })
+        });
+
+      var $tabs = $('.tabs').find('.tab'),
+          activeTab = 0;
+      $tabs.on('click', function(evt) {
+        var _index = $(this).index();
+        if(_index == activeTab)
+          return;
+        $($tabs[activeTab]).removeClass('active');
+        $(this).addClass('active');
+        activeTab = _index;
+      });
+
+    });
+  </script>
+</body>
+</html>

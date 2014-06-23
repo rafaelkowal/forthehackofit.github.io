@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuda - Single Page Portfolio</title>
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,300' rel='stylesheet' type='text/css'>
+  <style>
+    /* 1.38684210526316 */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 62.5%;
+    }
+    body {
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 400;
+      color: #fff;
+      font-size: 1.6rem;
+    }
+    .container {
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .row {
+      margin: 0 -15px;
+      padding: 3rem 0;
+    }
+    .col {
+      float:left;
+      padding: 0 15px;
+    }
+    .col-3 {
+      width: 25%;
+    }
+    .row:after,
+    .col:after {
+      content: '';
+      display: table;
+    }
+    /*** SKILLS ***/
+    .skills {
+      margin-top: 8.3rem;
+    }
+    .skill {
+      text-align: center;
+    }
+    .skill-icon {
+      display: block;
+      width: 159px;
+      height: 145px;
+      background: transparent url('images/icons.png') no-repeat;
+      background-size: cover;
+      margin: 0 auto 4rem;
+    }
+    .skill-title {
+      text-transform: uppercase;
+      margin: 2rem 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.2rem;
+    }
+    .icon-crayon {
+      background-position: 0 0;
+    }
+    .icon-flag {
+      background-position: 0 -145px;
+    }
+    .icon-gears {
+      background-position: 0 -290px;
+    }
+    .icon-rocket {
+      background-position: 0 -435px;
+    }
+    /*** SKILLS ***/
+
+    /*** TEAM ***/
+
+    /*** TEAM ***/
+    section {
+      padding: 3rem 0;
+    }
+    .section-title {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 0.5rem;
+      margin: 0;
+    }
+    .section-summary {
+      margin: 0 auto;
+      text-align: center;
+      width: 65%;
+      font-size: 1.8rem;
+    }
+    .line {
+      width: 87px;
+      height: 4px;
+      opacity: .15;
+      background-color: #000;
+      margin: 1.2rem auto;
+      border: 0;
+      outline: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+    nav li {
+      display: inline-block;
+      text-transform: uppercase;
+      width: 8rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* colors */
+    .theme-color-1 {
+      background-color: #864f9c;
+    }
+    .theme-color-2 {
+      background-color: #16c2a3;
+    }
+    .theme-color-3 {
+      background-color: #e7f1f8;
+      color: #27283d;
+    }
+    .theme-color-4 {
+      background-color: #fff;
+      color: #27283d;
+    }
+    .theme-color-5 {
+      background-color: #fd9;
+    }
+    .theme-color-6 {
+      background-color: #d74580;
+    }
+    .theme-color-7 {
+      background-color: #3c5399;
+    }
+    .logo {
+      width: 25.641025641026%; /* 300 / 1170 */
+      height: 3.7rem;
+      float: left;
+    }
+    .logo a {
+      background: url('images/logo.png') 20% 0 no-repeat;
+      text-indent: 100%;
+      overflow: hidden;
+      display: block;
+      padding-left: 20% ; /* 60 / 300 */;
+    }
+    nav {
+      float: right;
+      width: 74.358974358974%;
+      text-align: right;
+      line-height: 37px;
+    }
+    .hero {
+      text-align: center;
+      font-size: 3.216rem;
+      font-weight: 700;
+      color: #f7f3ea;
+    }
+    .hero .banner {
+      margin-bottom: 3rem;
+    }
+    .button {
+      width: 293px;
+      height: 70px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #eb7d4b;
+      outline: none;
+      border: none;
+    }
+
+    /* sprite icons w=159 h=145 */
+
+    /* media queries */
+    @media 
+    (-webkit-min-device-pixel-ratio: 2), 
+    (min-resolution: 192dpi) { 
+      /* Retina-specific stuff here */
+      .logo a{
+        background-image: url('images/logo@2x.png');
+        background-size: 118px 37px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- ******* HEADER ******* -->
+  <header class="theme-color-1">
+    <div class="container header">
+      <div class="row">
+        <h1 class="logo">
+          <a href="/">Cuda</a>
+        </h1>
+        <nav>
+          <ul>
+            <li>home</li>
+            <li>about</li>
+            <li>work</li>
+            <li>blog</li>
+            <li>contact</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- ******* END HEADER ******* -->
+
+
+
+  <!-- ******* HERO ******* -->
+  <section class="theme-color-1">
+    <div class="container">
+      <div class="row hero">
+        <h1 class="banner">
+          Hi there! We are the new kids on the block <br />and we build awesome websites and mobile apps.
+        </h1>
+        <button class="button"></button>
+      </div>
+    </div>
+  </section>
+  <!-- ******* END HERO ******* -->
+
+  
+
+  <!-- ******* SERVICES ******* -->
+  <section class="theme-color-2">
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title">Services we provide</h2>
+        <hr class='line'/>
+        <p class="section-summary">
+          We are working with both individuals and businesses from all over the globe to create awesome websites and applications.
+        </p>
+        <ul class="skills">
+          <li class="skill col col-3">
+            <i class="skill-icon icon-flag"></i>
+            <h3 class="skill-title">Branding</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident alias ab, culpa accusantium id!</p>
+          </li>
+          <li class="skill col col-3">
+            <i class="skill-icon icon-crayon"></i>
+            <h3 class="skill-title">Design</h3>
+            <p>Atque repudiandae, fugit nihil laudantium ad commodi amet labore, nobis ea similique sunt, dolorem.</p>
+          </li>
+          <li class="skill col col-3">
+            <i class="skill-icon icon-gears"></i>
+            <h3 class="skill-title">Development</h3>
+            <p class="skill-summary">Animi, doloremque ad quos, corporis sunt alias, aperiam ut ab quas error necessitatibus consectetur.</p>
+          </li>
+          <li class="skill col col-3">
+            <i class="skill-icon icon-rocket"></i>
+            <h3 class="skill-title">Rocket Science</h3>
+            <p>Laborum exercitationem ipsum quo at labore harum repellendus. In assumenda illo vitae, consequuntur porro.</p>
+          </li>
+        </ul>
+        <img src="" alt="">
+      </div>
+    </div>
+  </section>
+  <!-- ******* END SERVICES ******* -->
+
+  <!-- ******* TEAM ******* -->
+  <section class="theme-color-3">
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title">Meet our beautiful team</h2>
+        <hr class='line'/>
+        <p class="section-summary">
+          We are a small team of designers and developers, who help brands with big ideas.
+        </p>
+        <!-- ul.team>(li.col.col-3.teamate>(figure>img[src='images/team/']+figcaption)+h3{Jane Doe}+h4{Title}+(p.summary>lipsum28)+(div>(span.social.social-$)*4))*4 -->
+        <ul class="team">
+          <li class="col col-3 teamate">
+            <figure>
+              <img src="images/team/judy_andrews.jpg" alt="">
+              <figcaption></figcaption>
+            </figure>
+            <h3>Jane Doe</h3>
+            <h4>Title</h4>
+            <p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id assumenda similique saepe ratione illum sunt tempora perferendis, alias totam animi eos architecto ullam, blanditiis magni at possimus obcaecati?</p>
+            <div>
+              <span class="social social-1"></span>
+              <span class="social social-2"></span>
+              <span class="social social-3"></span>
+              <span class="social social-4"></span>
+            </div>
+          </li>
+          <li class="col col-3 teamate">
+            <figure>
+              <img src="images/team/michael_ramirez.jpg" alt="">
+              <figcaption></figcaption>
+            </figure>
+            <h3>Jane Doe</h3>
+            <h4>Title</h4>
+            <p class="summary">Hic, unde, recusandae. Eligendi aperiam dolor, quas. Tenetur nulla pariatur aliquid doloremque error excepturi distinctio accusamus dolore. Odio delectus atque, sunt qui soluta repellendus maiores minima repellat debitis.</p>
+            <div>
+              <span class="social social-1"></span>
+              <span class="social social-2"></span>
+              <span class="social social-3"></span>
+              <span class="social social-4"></span>
+            </div>
+          </li>
+          <li class="col col-3 teamate">
+            <figure>
+              <img src="images/team/alice_parker.jpg" alt="">
+              <figcaption></figcaption>
+            </figure>
+            <h3>Jane Doe</h3>
+            <h4>Title</h4>
+            <p class="summary">Tempore iste minus asperiores sit atque, animi explicabo facere, facilis eaque debitis optio nulla. Quia assumenda, harum excepturi magni cumque aut. Nulla iure iusto maiores, ipsa sapiente perspiciatis.</p>
+            <div>
+              <span class="social social-1"></span>
+              <span class="social social-2"></span>
+              <span class="social social-3"></span>
+              <span class="social social-4"></span>
+            </div>
+          </li>
+          <li class="col col-3 teamate">
+            <figure>
+              <img src="images/team/bryan_wright.jpg" alt="">
+              <figcaption></figcaption>
+            </figure>
+            <h3>Jane Doe</h3>
+            <h4>Title</h4>
+            <p class="summary">Aperiam quos minima inventore molestiae totam deserunt perspiciatis amet. Eaque quasi natus vitae nesciunt, rerum illum atque obcaecati. Iste vero ullam, sit maxime beatae praesentium commodi sapiente consequuntur.</p>
+            <div>
+              <span class="social social-1"></span>
+              <span class="social social-2"></span>
+              <span class="social social-3"></span>
+              <span class="social social-4"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- ******* END TEAM ******* -->
+
+
+
+  <!-- ******* SKILLS ******* -->
+  <section class="theme-color-4">
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title">We got skills</h2>
+        <hr class='line'/>
+        <p class="section-summary">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </section>
+  <!-- ******* END SKILLS ******* -->
+
+
+
+  <!-- ******* PORTFOLIO ******* -->
+  <section class="theme-color-5">
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title">Our portfolio</h2>
+        <hr class='line'/>
+        <p class="section-summary">
+          Neque porro quisquam est, qui dolorem ipsum quia dolor sit ametconsectetur, adipisci velit, sed quia non numquam
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="theme-color-6">
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title">What people say about us</h2>
+        <hr class='line'/>
+        <p class="section-summary">
+          Our clients love us!
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- ******* END PORTFOLIO ******* -->
+
+
+
+  <!-- ******* CONTACT ******* -->
+  <section class="theme-color-7">
+    <div class="container">
+      <div class="row">
+        <h2 class="section-title">Get in touch</h2>
+        <hr class='line'/>
+        <p class="section-summary">
+          1600 Pennsylvania Ave NW, Washington, DC 20500, United States of America. Tel: (202) 456-1111
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- ******* END CONTACT ******* -->
+
+
+
+  <!-- ******* FOOTER ******* -->
+
+  <!-- ******* END FOOTER ******* -->
+</body>
+</html>

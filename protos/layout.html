@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 63.5%; /* baseline is 10px now (10 / 16) * 100 */
+    }
+    body {
+      line-height: 3rem;
+    }
+    .container {
+      max-width: 120rem; /* 1200px */
+      margin: 0 auto 3rem;
+      padding: 1.5rem;
+      border: 1px solid #ccc;
+    }
+    #main {
+      width: 75%;
+      float: left;
+      clear: left;
+    }
+    #extra {
+      width: 25%;
+      float: right;
+      clear: right;
+      height: 100%;
+    }
+    .main:after {
+      content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+    }
+    /* media queries */
+    @media screen and (max-width: 86rem) {
+      #main, #extra {
+        width: 100%;
+        float: none;
+      }
+      #extra {
+        background-color: blue;
+        color: white;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+      <div class="container">
+        <h1>header</h1>
+      </div>
+    </header>
+    <div class="container main">
+      <section id="main">
+        <h2>Main</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, enim, consectetur ipsum vitae delectus totam assumenda non voluptate quae perferendis natus doloribus dicta tenetur ut blanditiis hic facere vel iure soluta esse cumque officia nobis. Eaque, quis, nihil, consectetur placeat quasi dolorem cum ut quo illum minima aut fugit perferendis.</p>
+      </section><aside id="extra">
+        <h3>Extras</h3>
+      </aside>
+    </div>
+    <footer>
+      <div class="container">
+        <h4>Footer</h4>
+      </div>
+    </footer>
+</body>
+</html>

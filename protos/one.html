@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>One HTTP</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .wrapper {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .row {
+      padding: 15px;
+      border: 1px solid #ccc;
+      margin-top: 15px;
+    }
+    footer {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="row">
+      <h1>One</h1>
+    </header>
+    <section class="row">
+      <article>
+        <figure id="carousel" data-src="images" data-set="portraits_14.jpg,portraits_02.jpg,portraits_01.jpg,portraits_16.jpg">
+          <img src="images/portraits_14.jpg" alt="moving the web forward">
+          <figcaption>
+            performance is everything
+          </figcaption>
+        </figure>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, tenetur, inventore, eaque officia ea illum dolorem facere unde non odit molestias quasi. Totam, explicabo, dolorum, aspernatur voluptatibus at enim dolorem vero iusto voluptas voluptates debitis animi inventore repudiandae adipisci reiciendis molestiae eveniet molestias suscipit blanditiis quia aliquid vel et! Soluta!</p>
+      </article>
+    </section>
+    <footer class="row">
+      
+    </footer>
+    <script>
+      (function (document) {
+        'use strict';
+        document.addEventListener("DOMContentLoaded", function(event) {
+          var _carousel = document.getElementById('carousel');
+          var _cdata = _carousel.dataset;
+          console.log(_cdata);
+          var _slides = _cdata.set.split(',');
+          console.log(_slides);
+          var _src = _cdata.src+"/";
+          var _chtml = [];
+          _slides.map(function (slide) {
+            _chtml.push("<div class='slide'><img src='"+_src+slide+"' />");
+          });
+          setTimeout( function () {
+            _carousel.innerHTML = _chtml.join('\n');
+          }, 5000);
+        });
+      })(document);
+    </script>
+  </div>
+</body>
+</html>
