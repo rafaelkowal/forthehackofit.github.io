@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Cuda - Single Page Portfolio</title>
   <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/fontello.css">
   <style>
     /* 1.38684210526316 */
     * {
@@ -100,6 +101,10 @@
       color: #30bae7;
       font-weight: 400;
       margin-bottom: 3rem;
+    }
+    .social {
+      font-size: 3.2rem;
+      color: #bdd1df;;
     }
     /*** TEAM ***/
     section {
@@ -202,7 +207,21 @@
       outline: none;
       border: none;
     }
-
+    #canvas .circle {
+      display: inline-block;
+      margin: 1em;
+    }
+    .circles-decimals {
+      font-size: .4em;
+    }
+    .circles-text {
+      font-size: 5rem;
+      font-weight: 300;
+    }
+    .circles-text:after {
+      content: '%';
+      font-size: 3.2rem;
+    }
     /* sprite icons w=159 h=145 */
 
     /* media queries */
@@ -316,10 +335,10 @@
             <h4 class="teamate-title">CEO / Marketing Guru</h4>
             <p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id assumenda similique saepe ratione illum sunt tempora perferendis, alias totam animi eos architecto ullam, blanditiis magni at possimus obcaecati?</p>
             <div>
-              <span class="social social-1"></span>
-              <span class="social social-2"></span>
-              <span class="social social-3"></span>
-              <span class="social social-4"></span>
+              <span class="social social-facebook"></span>
+              <span class="social social-twitter"></span>
+              <span class="social social-linkedin"></span>
+              <span class="social social-mail"></span>
             </div>
           </li>
           <li class="col col-3 teamate">
@@ -331,10 +350,10 @@
             <h4 class="teamate-title">CTO / In House Geek</h4>
             <p class="summary">Hic, unde, recusandae. Eligendi aperiam dolor, quas. Tenetur nulla pariatur aliquid doloremque error excepturi distinctio accusamus dolore. Odio delectus atque, sunt qui soluta repellendus maiores minima repellat debitis.</p>
             <div>
-              <span class="social social-1"></span>
-              <span class="social social-2"></span>
-              <span class="social social-3"></span>
-              <span class="social social-4"></span>
+              <span class="social social-facebook"></span>
+              <span class="social social-twitter"></span>
+              <span class="social social-linkedin"></span>
+              <span class="social social-mail"></span>
             </div>
           </li>
           <li class="col col-3 teamate">
@@ -346,10 +365,10 @@
             <h4 class="teamate-title">Lead Designer</h4>
             <p class="summary">Tempore iste minus asperiores sit atque, animi explicabo facere, facilis eaque debitis optio nulla. Quia assumenda, harum excepturi magni cumque aut. Nulla iure iusto maiores, ipsa sapiente perspiciatis.</p>
             <div>
-              <span class="social social-1"></span>
-              <span class="social social-2"></span>
-              <span class="social social-3"></span>
-              <span class="social social-4"></span>
+              <span class="social social-facebook"></span>
+              <span class="social social-twitter"></span>
+              <span class="social social-linkedin"></span>
+              <span class="social social-mail"></span>
             </div>
           </li>
           <li class="col col-3 teamate">
@@ -361,10 +380,10 @@
             <h4 class="teamate-title">UI Engineer</h4>
             <p class="summary">Aperiam quos minima inventore molestiae totam deserunt perspiciatis amet. Eaque quasi natus vitae nesciunt, rerum illum atque obcaecati. Iste vero ullam, sit maxime beatae praesentium commodi sapiente consequuntur.</p>
             <div>
-              <span class="social social-1"></span>
-              <span class="social social-2"></span>
-              <span class="social social-3"></span>
-              <span class="social social-4"></span>
+              <span class="social social-facebook"></span>
+              <span class="social social-twitter"></span>
+              <span class="social social-linkedin"></span>
+              <span class="social social-mail"></span>
             </div>
           </li>
         </ul>
@@ -382,7 +401,27 @@
         <h2 class="section-title">We got skills</h2>
         <hr class='line'/>
         <p class="section-summary">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+        <div id="canvas" class="row">
+          <div class="skill col col-3">
+            <div id="circles-1" class="circle" data-colors="#dfe8ed,#2fb9e7" data-percent="90"></div>
+            <h3 class="skill-title">Node JS</h3>
+          </div>
+          <div class="skill col col-3">
+            <div id="circles-2" class="circle" data-colors="#dfe8ed, #d7457f" data-percent="75"></div>
+            <h3 class="skill-title">Ruby on Rails</h3>
+          </div>
+          <div class="skill col col-3">
+            <div id="circles-3" class="circle" data-colors="#dfe8ed, #15c7a7" data-percent="70"></div>
+            <h3 class="skill-title">Angular JS</h3>
+          </div>
+          <div class="skill col col-3">
+            <div id="circles-4" class="circle" data-colors="#dfe8ed,#eb7d4b" data-percent="85"></div>
+            <h3 class="skill-title">Adobe CS*</h3>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -436,5 +475,29 @@
   <!-- ******* FOOTER ******* -->
 
   <!-- ******* END FOOTER ******* -->
+
+  <!-- ******* JAVASCRIPT ******* -->
+  <script src="js/circles.js"></script>
+  <script>
+    var colors = [
+      ['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']
+    ];
+
+    for (var i = 1; i <= 4; i++) {
+      var child = document.getElementById('circles-' + i),
+        percentage = 31 + (i * 9),
+        data = child.dataset;
+        console.log(data);
+        
+      Circles.create({
+        id:         child.id,
+        value: data.percent ? data.percent : percentage,
+        radius:     85,
+        width:      15,
+        colors:     data.colors ? data.colors.split(',') : colors[i - 1]
+      });
+    }
+  </script>
+  <!-- ******* JAVASCRIPT ******* -->
 </body>
 </html>
