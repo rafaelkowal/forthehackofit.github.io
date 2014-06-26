@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Media Queries</title>
+<link rel="stylesheet" media="all" href="cssbasic.css" />
+<link rel="stylesheet" media="screen and (min-width: 500px)" href="csswide.css" title="widescreen" />
+<style>
+  img { width: 100%; display: inline-block; max-width: 100%;}
+  .pictag:before {
+    content: attr('src');
+  }
+</style>
+</head>
+<body>
+
+<div id="page">
+
+<h1>JavaScript Media Queries</h1>
+
+<p>Current design: <strong id="current">unknown</strong></p>
+
+<section>
+  <img class="pictag" src="pics/smile-1-sm.jpg" alt="smiley" data-path="pics" data-sm="smile-1-sm.jpg" data-md="smile-1-md.jpg" data-lg="smile-1-lg.jpg">
+</section>
+
+<section>
+<div class="element">element one</div>
+<div class="element">element two</div>
+<div class="element">element three</div>
+</section>
+
+<p>For more information, please please refer to:<br />
+<a href="http://blogs.sitepoint.com/javascript-media-queries/">How to use Media Queries in JavaScript</a></p>
+
+<p>This example code was developed by <a href="http://twitter.com/craigbuckler">Craig Buckler</a> of <a href="http://optimalworks.net/">OptimalWorks.net</a> for <a href="http://sitepoint.com/">SitePoint.com</a>.</p>
+
+</div>
+
+<script src="mq.js"></script>
+
+</body>
+</html>

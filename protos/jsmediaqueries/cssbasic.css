@@ -1,0 +1,44 @@
+body
+{
+	font-family: arial, sans-serif;
+	font-size: 100%;
+	margin: 10px;
+	color: #222;
+	background-color: #dfd;
+}
+
+#page
+{
+	min-width: 200px;
+	padding: 20px 30px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid #999;
+}
+
+section
+{
+	float: left;
+	width: 100%;
+	margin-bottom: 3em;
+}
+
+div.element
+{
+	text-align: center;
+	padding: 10px 0;
+	margin: 4px;
+	background-color: #dfd;
+	border: 2px solid #666;
+}
+
+h1
+{
+	font-weight: normal;
+	margin: 0 0 1em 0;
+}
+
+strong
+{
+	color: #c00;
+}
