@@ -119,9 +119,20 @@
     }
     .social {
       font-size: 3.2rem;
-      color: #bdd1df;;
+      color: #bdd1df;
     }
     /*** TEAM ***/
+    .folionav li {
+      display: inline-block;
+      min-width: 8.4rem;
+      line-height: 3.8rem;
+      background-color: rgba(0,0,0,.08);
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+    .folionav li.active {
+      background-color: #fff;
+    }
     section {
       padding: 3rem 0;
     }
@@ -456,13 +467,19 @@
         </p>
       </div>
       <div class="row">
-        <ul class="tac">
-          <li>
+        <ul class="tac folionav">
+          <li class="active">
             <a class="filter" data-filter="all" data-set="work">All</a>
           </li>
-          <li><a class="filter" data-filter=".apps" data-set="apps">Apps</a></li>
-          <li><a class="filter" data-filter=".web" data-set="web">Websites</a></li>
-          <li><a class="filter" data-filter=".uikits" data-set="uikits">UI Kits</a></li>
+          <li>
+            <a class="filter" data-filter=".apps" data-set="apps">Apps</a>
+          </li>
+          <li>
+            <a class="filter" data-filter=".web" data-set="web">Websites</a>
+          </li>
+          <li>
+            <a class="filter" data-filter=".uikits" data-set="uikits">UI Kits</a>
+          </li>
         </ul>
         <ul class="folio">
           <li class="col col-4 work mix apps">
