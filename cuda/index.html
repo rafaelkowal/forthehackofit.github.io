@@ -24,6 +24,12 @@
     img {
       max-width: 100%;
     }
+    .tac {
+      text-align: center;
+    }
+    .upper {
+      text-transform: uppercase;
+    }
     .round {
       border-radius: 50%;
     }
@@ -42,6 +48,15 @@
     }
     .col-3 {
       width: 25%;
+    }
+    .col-4 {
+      width: 33.33333333333333%;
+    }
+    .work {
+      margin-top: 20px;
+    }
+    .work img {
+      border: 5px solid #fff;
     }
     .row:after,
     .col:after {
@@ -162,6 +177,7 @@
     }
     .theme-color-5 {
       background-color: #fd9;
+      color: #393939;
     }
     .theme-color-6 {
       background-color: #d74580;
@@ -439,6 +455,90 @@
           Neque porro quisquam est, qui dolorem ipsum quia dolor sit ametconsectetur, adipisci velit, sed quia non numquam
         </p>
       </div>
+      <div class="row">
+        <ul class="tac">
+          <li>
+            <a class="filter" data-filter="all" data-set="work">All</a>
+          </li>
+          <li><a class="filter" data-filter=".apps" data-set="apps">Apps</a></li>
+          <li><a class="filter" data-filter=".web" data-set="web">Websites</a></li>
+          <li><a class="filter" data-filter=".uikits" data-set="uikits">UI Kits</a></li>
+        </ul>
+        <ul class="folio">
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/apps/dribbble_radio.png" alt="">
+              <figcaption class="tac upper">Music Player</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/apps/musictwofreebie.png" alt="">
+              <figcaption class="tac upper">Music Library</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix uikits">
+            <figure>
+              <img src="images/folio/uikits/ios-kit.png" alt="">
+              <figcaption class="tac upper">IOS 7 UI Kit</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix web">
+            <figure>
+              <img src="images/folio/web/surf-drbb.jpg" alt="">
+              <figcaption class="tac upper">Pro Surf Website</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/uikits/beeline.png" alt="">
+              <figcaption class="tac upper">Beeline UI Kit</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix web">
+            <figure>
+              <img src="images/folio/web/crafty_dribbble.jpg" alt="">
+              <figcaption class="tac upper">Crafty Landing Page</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/apps/sparrow.png" alt="">
+              <figcaption class="tac upper">Sparrow Redesign</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix uikits">
+            <figure>
+              <img src="images/folio/uikits/colorful.jpg" alt="">
+              <figcaption class="tac upper">Colorful UI Kit</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/apps/weather.png" alt="">
+              <figcaption class="tac upper">Weather IOS App</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix web">
+            <figure>
+              <img src="images/folio/web/free_kenzi_web_ui.jpg" alt="">
+              <figcaption class="tac upper">Kenzi Website</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/apps/muzik.jpg" alt="">
+              <figcaption class="tac upper">Muzik Web App</figcaption>
+            </figure>
+          </li>
+          <li class="col col-4 work mix apps">
+            <figure>
+              <img src="images/folio/apps/music.png" alt="">
+              <figcaption class="tac upper">Muzik IOS App</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
   <section class="theme-color-6">
@@ -481,7 +581,7 @@
   <script>
     var colors = [
       ['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']
-    ];
+    ], circles = [];
 
     for (var i = 1; i <= 4; i++) {
       var child = document.getElementById('circles-' + i),
@@ -489,14 +589,23 @@
         data = child.dataset;
         console.log(data);
         
-      Circles.create({
+      circles.push(Circles.create({
         id:         child.id,
-        value: data.percent ? data.percent : percentage,
+        value: data.percent,
+        maxValue: 100,
         radius:     85,
         width:      15,
-        colors:     data.colors ? data.colors.split(',') : colors[i - 1]
-      });
+        colors:     data.colors ? data.colors.split(',') : colors[i - 1],
+        duration: null
+      }));
     }
+
+
+    // document.getElementById('canvas').onmouseover = function()
+    // {
+    //     for(var i = 0, l = circles.length; i < l; i++)
+    //     circles[i].update(circles[i]._value, 250);
+    // };
   </script>
   <!-- ******* JAVASCRIPT ******* -->
 </body>
