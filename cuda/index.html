@@ -21,6 +21,9 @@
       color: #fff;
       font-size: 1.6rem;
     }
+    .tac {
+      text-align: center;
+    }
     img {
       max-width: 100%;
     }
@@ -55,6 +58,9 @@
     .col-6 {
       width: 50%;
     }
+    .col-12 {
+      width: 100%;
+    }
     .work {
       margin-top: 20px;
     }
@@ -62,7 +68,10 @@
       border: 5px solid #fff;
     }
     .row:after,
-    .col:after {
+    .col:after,
+    .col:before,
+    .clear:before,
+    .clear:after {
       content: '';
       display: table;
     }
@@ -124,6 +133,12 @@
       font-size: 3.2rem;
       color: #bdd1df;
     }
+    .onepad {
+      padding: 1rem 0;
+    }
+    .nopad {
+      padding: 0;
+    }
     /*** TEAM ***/
     .folionav {
       margin-bottom: 50px;
@@ -135,9 +150,17 @@
       background-color: rgba(0,0,0,.08);
       border-radius: 4px;
       margin-right: 5px;
+      cursor: pointer;
     }
-    .folionav li.active {
+    a.filter {
+      display: block;
+      border-radius: 4px;
+    }
+    .filter.active {
       background-color: #fff;
+    }
+    .folio .mix {
+      display: none;
     }
     .feedback {
       margin-bottom: 80px;
@@ -152,6 +175,14 @@
     }
     .feedback > div {
       max-width: 80.17094017094%;
+    }
+    .feedback blockquote {
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+    }
+    .feedback .title {
+      color: #ffdd99;
+      font-weight: 400;
     }
     section {
       padding: 3rem 0;
@@ -216,6 +247,9 @@
     .theme-color-7 {
       background-color: #3c5399;
     }
+    .theme-color-8 {
+      background-color: #334b8e;;
+    }
     .logo {
       width: 25.641025641026%; /* 300 / 1170 */
       height: 3.7rem;
@@ -234,6 +268,18 @@
       text-align: right;
       line-height: 37px;
     }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 1px;
+    }
+    nav a:hover {
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #633a79;
+    }
     .hero {
       text-align: center;
       font-size: 3.216rem;
@@ -244,15 +290,34 @@
       margin-bottom: 3rem;
     }
     .button {
-      width: 293px;
-      height: 70px;
+      min-width: 29rem;
+      line-height: 7rem;
       border-radius: 4px;
+      text-align: center;
+      text-transform: uppercase;
       -moz-background-clip: padding;
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
       background-color: #eb7d4b;
       outline: none;
       border: none;
+      position: relative;
+      color: #fff;
+      font-size: 1.8rem;
+    }
+    .button:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      opacity: .15;
+      background-color: #000;
+      border-radius: 0 0 4px 4px;
+    }
+    .submit {
+      background-color: #2fb9e7;
     }
     #canvas .circle {
       display: inline-block;
@@ -271,6 +336,67 @@
     }
     /* sprite icons w=159 h=145 */
 
+    /* form styles */
+    form * {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+    ::-webkit-input-placeholder {
+       color: #fff;
+    }
+    ::-webkit-input-placeholder:after {
+       content: '*';
+       color: red;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: #fff;  
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: #fff;  
+    }
+
+    :-ms-input-placeholder {  
+       color: #fff;  
+    }
+    form input {
+      line-height: 56px;
+      outline: none;
+      border: none;
+      width: 100%;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #273971;
+      padding-left: 20px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 200px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #273971;
+      outline: none;
+      border: none;
+      padding: 20px;
+    }
+    .contactlinks li {
+      float: left;
+      min-width: 14.28571428571429%;
+      text-align: center;
+      font-size: 2.4rem;
+    }
+    .contactlinks a:link {
+      color: #fff;
+      text-decoration: none;
+    }
+    .contactlinks a:hover {
+      color: #30bae7;
+    }
     /* media queries */
     @media 
     (-webkit-min-device-pixel-ratio: 2), 
@@ -296,11 +422,11 @@
         </h1>
         <nav>
           <ul>
-            <li>home</li>
-            <li>about</li>
-            <li>work</li>
-            <li>blog</li>
-            <li>contact</li>
+            <li><a href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#work">work</a></li>
+            <li><a href="#blog">blog</a></li>
+            <li><a href="#contact">contact</a></li>
           </ul>
         </nav>
       </div>
@@ -317,7 +443,7 @@
         <h1 class="banner">
           Hi there! We are the new kids on the block <br />and we build awesome websites and mobile apps.
         </h1>
-        <button class="button"></button>
+        <button class="button">Work with us!</button>
       </div>
     </div>
   </section>
@@ -372,7 +498,7 @@
           We are a small team of designers and developers, who help brands with big ideas.
         </p>
         <!-- ul.team>(li.col.col-3.teamate>(figure>img[src='images/team/']+figcaption)+h3{Jane Doe}+h4{Title}+(p.summary>lipsum28)+(div>(span.social.social-$)*4))*4 -->
-        <ul class="team">
+        <ul class="team clear">
           <li class="col col-3 teamate">
             <figure>
               <img class="round" src="images/team/judy_andrews.jpg" alt="Judy Andrews - CEO / Marketing Guru of Cuda. Judy has blah blah blah...">
@@ -410,7 +536,7 @@
             </figure>
             <h3 class="teamate-name">Alice Parker</h3>
             <h4 class="teamate-title">Lead Designer</h4>
-            <p class="summary">Tempore iste minus asperiores sit atque, animi explicabo facere, facilis eaque debitis optio nulla. Quia assumenda, harum excepturi magni cumque aut. Nulla iure iusto maiores, ipsa sapiente perspiciatis.</p>
+            <p class="summary">Tempore iste minus asperiores sit atque, animi explicabo facere, facilis eaque debitis optio nulla. Quia assumenda, harum excepturi magni cumque aut. Nulla iure iusto maiores, ipsa sapiente perspiciatis sapiente consequuntur</p>
             <div>
               <span class="social social-facebook"></span>
               <span class="social social-twitter"></span>
@@ -526,7 +652,7 @@
               <figcaption class="tac upper">Pro Surf Website</figcaption>
             </figure>
           </li>
-          <li class="col col-4 work mix apps">
+          <li class="col col-4 work mix uikits">
             <figure>
               <img src="images/folio/uikits/beeline.png" alt="">
               <figcaption class="tac upper">Beeline UI Kit</figcaption>
@@ -590,38 +716,54 @@
       <div class="row">
         <div class="feedback col col-6">
           <figure>
-            <img src="http://placehold.it/96x96" alt="" class="round">
+            <img src="images/team/alice_parker.jpg" alt="" class="round">
           </figure><div>
-            <blockquote><em>&#8220;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit praesentium dolorem veritatis amet eum ullam, cum, quae vero perspiciatis.&#8221;</em></blockquote>
-            <h3>Chanel Iman</h3>
-            <h4>CEO of Acme Inc.</h4>
+            <blockquote>
+              <em>
+                &#8220;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit praesentium dolorem veritatis amet eum ullam, cum, quae vero perspiciatis.&#8221;
+              </em>
+            </blockquote>
+            <h3 class="upper">Chanel Iman</h3>
+            <h4 class="title">CEO of Pinterest</h4>
           </div>
         </div>
         <div class="feedback col col-6">
           <figure>
-            <img src="http://placehold.it/96x96" alt="" class="round">
+            <img src="images/team/bryan_wright.jpg" alt="" class="round">
           </figure><div>
-            <blockquote><em>&#8220;Quo ut, quaerat doloremque neque repellat, numquam eligendi possimus dignissimos a laudantium consequuntur aperiam debitis aspernatur culpa amet facere! Placeat.&#8221;</em></blockquote>
-            <h3>Chanel Iman</h3>
-            <h4>CEO of Acme Inc.</h4>
+            <blockquote>
+              <em>
+                &#8220;Quo ut, quaerat doloremque neque repellat, numquam eligendi possimus dignissimos a laudantium consequuntur aperiam debitis...&#8221;
+              </em>
+            </blockquote>
+            <h3 class="upper">Mike Brown</h3>
+            <h4 class="title">Founder of Instagram</h4>
           </div>
         </div>
         <div class="feedback col col-6">
           <figure>
-            <img src="http://placehold.it/96x96" alt="" class="round">
+            <img src="images/team/michael_ramirez.jpg" alt="" class="round">
           </figure><div>
-            <blockquote><em>&#8220;Tempora exercitationem, enim ad amet! Nemo quos dolorum quasi ab a, odio maxime! Odio quaerat illum perspiciatis, non dolor rem!&#8221;</em></blockquote>
-            <h3>Chanel Iman</h3>
-            <h4>CEO of Acme Inc.</h4>
+            <blockquote>
+              <em>
+                &#8220;Tempora exercitationem, enim ad amet! Nemo quos dolorum quasi ab a, odio maxime! Odio quaerat illum perspiciatis, non dolor rem!&#8221;
+              </em>
+            </blockquote>
+            <h3 class="upper">Bob Craig</h3>
+            <h4 class="title">Lead Designer at Behance</h4>
           </div>
         </div>
         <div class="feedback col col-6">
           <figure>
-            <img src="http://placehold.it/96x96" alt="" class="round">
+            <img src="images/team/judy_andrews.jpg" alt="" class="round">
           </figure><div>
-            <blockquote><em>&#8220;Quia ab natus aperiam, quos consequatur pariatur sed cumque mollitia odit eligendi dolorem earum animi aliquid id perspiciatis incidunt consequuntur!&#8221;</em></blockquote>
-            <h3>Chanel Iman</h3>
-            <h4>CEO of Acme Inc.</h4>
+            <blockquote>
+              <em>
+                &#8220;Quia ab natus aperiam, quos consequatur pariatur sed cumque mollitia odit eligendi dolorem earum animi aliquid id perspiciatis incidunt consequuntur!&#8221;
+              </em>
+            </blockquote>
+            <h3 class="upper">Audrey Burns</h3>
+            <h4 class="title">Co-Founder of Shazam</h4>
           </div>
         </div>
       </div>
@@ -641,6 +783,26 @@
           1600 Pennsylvania Ave NW, Washington, DC 20500, United States of America. Tel: (202) 456-1111
         </p>
       </div>
+      <div class="container">
+        <form action="#">
+          <div class="row">
+            <div class="col col-6">
+              <input type="text" required="required" placeholder="Your Name"/>
+            </div>
+            <div class="col col-6">
+              <input type="email" required="required" placeholder="Your Email"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-12">
+              <textarea name="" id="" required="required" placeholder="Your Message"></textarea>
+            </div>
+          </div>
+          <div class="row tac">
+            <button class="button submit">Send Message</button>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
   <!-- ******* END CONTACT ******* -->
@@ -648,11 +810,55 @@
 
 
   <!-- ******* FOOTER ******* -->
-
+  <section class="theme-color-8 onepad">
+    <div class="container">
+      <div class="row nopad">
+        <ul class="contactlinks clear">
+          <li>
+            <a href="#">
+              Facebook 
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Google+
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Behance
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Dribbble
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Github
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <!-- ******* END FOOTER ******* -->
 
   <!-- ******* JAVASCRIPT ******* -->
   <script src="js/circles.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
   <script>
     var colors = [
       ['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']
@@ -675,6 +881,7 @@
       }));
     }
 
+    $('.folio').mixItUp();
 
     // document.getElementById('canvas').onmouseover = function()
     // {
