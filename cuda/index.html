@@ -67,6 +67,11 @@
     .work img {
       border: 5px solid #fff;
     }
+    :before, :after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
     .row:after,
     .col:after,
     .col:before,
@@ -460,30 +465,29 @@
         <p class="section-summary">
           We are working with both individuals and businesses from all over the globe to create awesome websites and applications.
         </p>
-        <ul class="skills">
-          <li class="skill col col-3">
-            <i class="skill-icon icon-flag"></i>
-            <h3 class="skill-title">Branding</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident alias ab, culpa accusantium id!</p>
-          </li>
-          <li class="skill col col-3">
-            <i class="skill-icon icon-crayon"></i>
-            <h3 class="skill-title">Design</h3>
-            <p>Atque repudiandae, fugit nihil laudantium ad commodi amet labore, nobis ea similique sunt, dolorem.</p>
-          </li>
-          <li class="skill col col-3">
-            <i class="skill-icon icon-gears"></i>
-            <h3 class="skill-title">Development</h3>
-            <p class="skill-summary">Animi, doloremque ad quos, corporis sunt alias, aperiam ut ab quas error necessitatibus consectetur.</p>
-          </li>
-          <li class="skill col col-3">
-            <i class="skill-icon icon-rocket"></i>
-            <h3 class="skill-title">Rocket Science</h3>
-            <p>Laborum exercitationem ipsum quo at labore harum repellendus. In assumenda illo vitae, consequuntur porro.</p>
-          </li>
-        </ul>
-        <img src="" alt="">
       </div>
+      <ul class="skills row">
+        <li class="skill col col-3">
+          <i class="skill-icon icon-flag"></i>
+          <h3 class="skill-title">Branding</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident alias ab, culpa accusantium id!</p>
+        </li>
+        <li class="skill col col-3">
+          <i class="skill-icon icon-crayon"></i>
+          <h3 class="skill-title">Design</h3>
+          <p>Atque repudiandae, fugit nihil laudantium ad commodi amet labore, nobis ea similique sunt, dolorem.</p>
+        </li>
+        <li class="skill col col-3">
+          <i class="skill-icon icon-gears"></i>
+          <h3 class="skill-title">Development</h3>
+          <p class="skill-summary">Animi, doloremque ad quos, corporis sunt alias, aperiam ut ab quas error necessitatibus consectetur.</p>
+        </li>
+        <li class="skill col col-3">
+          <i class="skill-icon icon-rocket"></i>
+          <h3 class="skill-title">Rocket Science</h3>
+          <p>Laborum exercitationem ipsum quo at labore harum repellendus. In assumenda illo vitae, consequuntur porro.</p>
+        </li>
+      </ul>
     </div>
   </section>
   <!-- ******* END SERVICES ******* -->

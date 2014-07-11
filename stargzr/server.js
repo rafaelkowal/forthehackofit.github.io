@@ -59,14 +59,20 @@ var movieSchema = new mongoose.Schema({
   original_title: String,
   title: { type: String, required: true },
   overview: String,
+  budget: Number,
+  runtime: Number,
   poster_path: String,
   release_date: Date,
   status: String,
   tagline: String,
-  cast: [{}],
   vote_average: Number,
   vote_count: Number,
-  slug: { type: String, unique: true }
+  slug: { type: String, unique: true },
+  cast: [{}],
+  crew: [{}],
+  backdrops: [{}],
+  posters: [{}],
+  trailers: [{}]
 });
 
 movieSchema.pre('save', function(next) {
@@ -114,7 +120,83 @@ var _ = require('lodash');
 var apiUrl = "https://api.themoviedb.org/3/",
     apiKey = "d9e6e07490160fe90b54a6609dbde93b";
 
-agenda.define('get latest', { priority: 'high', concurrency: 10 }, function(job, done) {
+agenda.define('get movies', {}, function (job, done) {
+  var apiPath = job.attrs.data;
+  //Movie.remove({});
+  async.waterfall([
+    /** get the default movie details **/
+    function (callback) {
+      request(apiUrl+apiPath+'popular?api_key='+apiKey, function (err, response, body) {
+        if(err) return next(err);
+        var data = JSON.parse(body);
+        //console.log(data);
+        _.each(data.results, function(m) {
+          //console.log("131",m);
+          var movie = new Movie(m);
+          movie._id = m.id;
+          callback(err, movie);
+          console.log(movie);
+        });
+      });
+    },
+    /** get the overview **/
+    function (movie, callback) {
+      request(apiUrl+apiPath+movie._id+'?api_key='+apiKey, function (err, response, body) {
+        console.log(response);
+        if(err) return next(err);
+        var details = JSON.parse(body);
+        console.log("D:",details);
+        movie.overview = details.overview;
+        movie.genres = details.genres;
+        movie.budget = details.budget;
+        movie.runtime = details.runtime;
+        callback(err, movie);
+      });
+    },
+    /** get the cast **/
+    function (movie, callback) {
+      request(apiUrl+apiPath+movie._id+"/credits?api_key="+apiKey, function (err, response, body) {
+        if(err) return next(err);
+        var credits = JSON.parse(body);
+        movie.cast = credits.cast;
+        movie.crew = credits.crew;
+        callback(err, movie);
+      });
+    },
+    /** get the images and backdrops **/
+    function (movie, callback) {
+      request(apiUrl+apiPath+movie._id+"/images?api_key="+apiKey, function (err, response, body) {
+        if(err) return next(err);
+        var media = JSON.parse(body);
+        movie.backdrops = _.sortBy(media.backdrops, ['vote_count', 'vote_average']);
+        movie.posters = _.sortBy(media.posters, ['vote_count', 'vote_average']);
+        callback(err, movie);
+      });
+    },
+    /** get the trailers **/
+    function (movie, callback) {
+      request(apiUrl+apiPath+movie._id+"/videos?api_key="+apiKey, function (err, response, body) {
+        var videos = JSON.parse(body);
+        movie.trailers = videos.results;
+        callback(err, movie);
+      });
+    },
+    /** finally save the movie **/
+
+  ], function (err, movie) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      movie.save(function(err, movie) {
+        if (err) return;
+      });
+      done();
+    });
+  //);
+});
+
+agenda.define('get latest', { priority: 'high', concurrency: 10 }, function (job, done) {
     async.waterfall([
       /* get the basic start info */
       function (callback) {
@@ -173,6 +255,9 @@ agenda.define('get latest', { priority: 'high', concurrency: 10 }, function(job,
 
 var dailyPull = agenda.schedule('daily pull', 'get latest', 'person/popular');
     dailyPull.repeatEvery('0 16 15 * *').save();
+
+var getPopular = agenda.schedule('get movie', 'get movies', 'movie/');
+    getPopular.repeatEvery('1 48 * * *').save();
 
 //agenda.start();
 
@@ -233,6 +318,20 @@ app.get('/api/actors/:_id/:slug', function(req, res, next) {
         console.log(star);
         res.send(star);
     });
+});
+
+app.get('/api/movies', function (req, res, next) {
+  var query = Movie.find();
+  if(req.query.category) {
+    query.where({ category: req.query.category });
+  }
+  else {
+    query.limit(30);
+  }
+  query.exec(function (err, movies) {
+    if(err) return next(err);
+    res.send(movies);
+  });
 });
 
 // get a movie
