@@ -2,3 +2,4 @@
 *.psd
 circles-master/
 *.zip
+node_modules/

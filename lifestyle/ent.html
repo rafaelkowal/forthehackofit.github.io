@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>off canvas</title>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="grid.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 63.5%;
+      font-family: "Montserrat", serif;
+      height: 100%;
+    }
+    body {
+      font-size: 1.6rem;
+      line-height: 2.8rem;
+      height: 100%;
+      color: #9da0b0;
+      background-color: #ebecf1;
+    }
+  
+    a:link, a:visited {
+      text-decoration: none;
+      color: #9da0b0;
+    }
+    a.selected {
+      color: #000;
+    }
+    ul {
+      list-style: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    .rounded {
+      border-radius: 50%;
+    }
+    .fixed {
+      position: fixed;
+    }
+    .wrapper {
+      height: 100%;
+    }
+    aside {
+      color: #fff;
+      width: 50%; /* give it a width of 25% */
+      float: left; /* float it to the left */
+      height: 100%;
+      margin-left: -50%; 
+      position: absolute;
+      font-size: 2rem;
+      background: url('transp.png'), #383a44;
+      overflow: hidden;
+    }
+    nav li {
+      padding: 8px;
+    }
+
+    section {
+      width: 100%;
+      height: 100%;
+      float: right;
+      margin-right: 0;
+      position: relative;
+    }
+    aside,
+    section {
+      -webkit-transition: margin 0.5s ease-in-out;
+      -moz-transition: margin 0.5s ease-in;
+      -ms-transition: margin 0.5s ease-in;
+      -o-transition: margin 0.5s ease-in;
+      transition: margin 0.5s ease-in;
+    }
+    .main {
+       margin-top: 79px;
+       background-color: #fff;
+       border-bottom: 2px solid #d1d3dc;
+       width: 100%;
+    }
+    .content {
+      background-color: #ebecf1;
+      padding-top: 131px;
+    }
+    .headerfixed {
+      height: 80px;
+      background-color: #35373f;
+      background-image: -moz-linear-gradient(bottom, #6baf3d 0%, #99c739 100%);
+      background-image: -o-linear-gradient(bottom, #6baf3d 0%, #99c739 100%);
+      background-image: -webkit-linear-gradient(bottom, #6baf3d 0%, #99c739 100%);
+      background-image: linear-gradient(bottom, #6baf3d 0%, #99c739 100%);
+      margin: 0;
+      position: fixed;
+      width: 100%;
+      padding: 0 15px;
+      border-bottom: 2px solid #3d6422;
+      z-index: 1000;
+    }
+    .toggle, .biglabel {
+     display: none; 
+    }
+
+    .toggle:checked + .wrapper > aside {
+      margin-left: 0; /* this brings back the navigation into view at 0px*/
+    }
+
+    .toggle:checked + .wrapper > section {
+      margin-right: -50%;
+    }
+
+    .biglabel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+    }
+
+    .toggle:checked + .wrapper > section .biglabel {
+      display:block;
+      cursor: pointer;
+    }
+
+    .navicon {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: url('navicon.png') no-repeat;
+      background-size: cover;
+      cursor: pointer;
+  }
+  .navlinks {
+    padding: 25px;
+    height: 100%;
+    background: url('transp.png'), #383a44;
+  }
+  .navheader {
+    background: url('transp.png'), #343640;
+    padding: 25px 25px 0;
+  }
+
+  .hrborder {
+    border-top: 2px solid #292a30;
+    border-bottom: 2px solid rgba(255,255,255,0.05);
+    margin-left: -26px;
+    margin-right: -26px;
+    overflow: hidden;
+  }
+
+  .navside {
+    position: relative;
+    line-height: 50px;
+  }
+  .navside:after {
+    content: attr(data-count);
+    position: absolute;
+    right: 25px;
+    line-height: 16px;
+    padding: 8px 17px;
+    opacity: .99;
+    -moz-border-radius: 18px / 17px;
+    -webkit-border-radius: 18px / 17px;
+    border-radius: 18px / 17px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #33353f;
+    -moz-box-shadow: 0 2px 0 rgba(255,255,255,.1), inset 0 2px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 2px 0 rgba(255,255,255,.1), inset 0 2px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 0 rgba(255,255,255,.1), inset 0 2px 0 rgba(0,0,0,.2);
+    font-size: 16px;
+  }
+  .navprofile > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .navprofile > figure {
+    max-width: 96px;
+    height: 96px;
+    padding-right: 20px;
+  }
+  .navprofile > div {
+    
+  }
+  .navprofile blockquote {
+    font-size: 2.1rem;
+    margin-bottom: 2rem;
+  }
+  .navprofile .title {
+    color: #ffdd99;
+    font-weight: 400;
+  }
+  .profile-name {
+    margin-top: 20px;
+    line-height: 25px;
+  }
+  .profile-location {
+    color: #9da0b0;
+    font-size: 18px;
+  }
+  .account li {
+    display: inline-block;
+    text-transform: uppercase;
+    width: 33.33333333333333%;
+    text-align: center;
+    font-size: 14px;
+    color: #9da0b0;
+  }
+  .nav-inner li {
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    line-height: 28px;
+    font-size: 1.8rem;
+  }
+  .nav-inner li:after {
+    content: '|';
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .nav-inner li:last-child:after {
+    content: '';
+  }
+  .featured {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #d1d3db;
+
+  }
+  .featured img {
+    width: 100%;
+  }
+  .item {
+    margin-bottom: 30px;
+  }
+  .topitem {
+    margin-top: 0;
+  }
+  .dib {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .header-icon {
+    position: absolute;
+  }
+  .header-title {
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 2px rgba(0,0,0,.3);
+  }
+  @media only screen  and (max-width: 640px) {
+    .container {
+      margin: 0;
+      padding: 10px;
+    }
+    .row {
+      padding: 10px;
+      margin: 0 -10px;
+    }
+    [class*="col-"] {
+      padding: 0 10px;
+    }
+    .item {
+      margin-bottom: 20px;
+    }
+    .content {
+      padding-top: 148px;
+    }
+    .col-3-of-12 {
+      width: 25%;
+    }
+    .med-2 {
+      width: 50%;
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <input type="checkbox" id="offcanvas" class="toggle" />
+
+  <div class="wrapper">
+    <aside>
+      <nav>
+        <header class="navheader">
+          <div class="navprofile profile">
+            <figure>
+              <img src="eva.jpg" alt="" class="thumb rounded">
+            </figure>
+            <div>
+              <h3 class="profile-name">Eva Lovelace</h3>
+              <h4 class="profile-location">Forgetmeville, United States</h4>
+            </div>
+          </div>
+          <hr class="hrborder" />
+          <ul class="account">
+            <li>favorites</li><li>queue</li><li>messages</li>
+          </ul>
+          <hr class="hrborder" />
+        </header>
+        <ul class="navlinks">
+          <li class="navside" data-count="1254">Movies</li>
+          <li class="navside" data-count="468">TV Series</li>
+          <li class="navside" data-count="387">Kids</li>
+          <li class="navside" data-count="645">Latino</li>
+          <li class="navside" data-count="57">Exclusive</li>
+          <li class="navside" data-count="1547">Original</li>
+          <li class="navside" data-count="350">Video Games</li>
+          <li class="navside" data-count="1544">Recommendations</li>
+        </ul>
+      </nav>
+    </aside>
+    <section>
+      <label for="offcanvas" class="biglabel"></label>
+      <div class="headerfixed">
+        <div class="container">
+          <div class="row">
+            <label class="header-icon icon-left" for="offcanvas">
+              <span class="navicon"></span>
+            </label>
+            <h1 class="col header-title">TV Series</h1>
+          </div>
+        </div>
+      </div>
+      
+      <div class="main fixed">
+       <div class="container">
+         <div class="row">
+            <ul class="nav-inner">
+             <li class="col col-3-of-12">
+              <a href="#" class="selected">
+               <h4>Popular</h4>
+              </a>
+             </li><li class="col col-3-of-12">
+             <a href="#">
+               <h4>Now Playing</h4>
+              </a>
+             </li>
+             <li class="col col-3-of-12">
+             <a href="#">
+               <h4>Top Rated</h4>
+              </a>
+             </li>
+             <li class="col col-3-of-12">
+             <a href="#">
+               <h4>Upcoming</h4>
+              </a>
+             </li>
+           </ul>
+         </div>
+       </div>
+    </div>
+    <div class="content"> 
+        <div class="container">
+         <div class="row">
+           <ul class="items">
+             <li class="item col col-12-of-12 topitem">
+               <figure class="featured">
+                <img src="curvy.jpg" alt="curvy girls - rising to the top">
+              </figure>
+             </li>
+             <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/quickdraw.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/community.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/pretty-little-liars.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/project-runway.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/mindy-project.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/deception.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/greys-anatomy.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/bones.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/lost.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/the-office.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/curvy-girls.jpg" alt=""></figure>
+            </li>
+            <li class="item col col-3-of-12 med-2">
+              <figure><img src="movies/revenge.jpg" alt=""></figure>
+            </li>
+           </ul>
+         </div>
+       </div>   
+      </div>
+    </section>
+  </div>
+</body>
+</html>

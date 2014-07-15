@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>Just a grid</title>
+   <style>
+      *, *:after, *:before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      .container {
+        max-width: 1170px;
+        margin: 0 auto;
+        padding: 15px 15px 0;
+      }
+      .row {
+        margin: 0 -15px 15px;
+        padding: 0 15px;
+        background-color: #fff;
+      }
+      .row:after,
+      .container:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .col {
+        float: left;
+        width: 100%;
+      }
+      .col-1-of-12,
+      .col-2-of-12,
+      .col-3-of-12,
+      .col-4-of-12,
+      .col-5-of-12,
+      .col-6-of-12,
+      .col-7-of-12,
+      .col-8-of-12,
+      .col-9-of-12,
+      .col-10-of-12,
+      .col-11-of-12,
+      .col-12-of-12 {
+        width: 100%;
+      }
+      /* Smartphones (portrait and landscape) ----------- */
+      @media only screen
+      and (min-device-width: 320px)
+      and (max-device-width: 480px)
+      { 
+      }
+
+      /* iPads (portrait and landscape) ----------- */
+      @media only screen 
+      and (min-width : 768px) 
+      and (max-width : 1024px)
+      {
+      /* Styles */
+        .med-2 {
+          width: 50%;
+        }
+        .med-3 {
+          width: 25%;
+        }
+        .med-4 {
+          width: 33.333333333333%;
+        }
+      }
+
+      /* Desktops and laptops ----------- */
+      @media only screen 
+      and (min-width : 1224px) {
+      /* Styles */
+        .col-1-of-12 {
+          width: 8.33333333333333%;
+        }
+        .col-2-of-12 {
+          width: 16.666666666667%;
+        }
+        .col-3-of-12 {
+          width: 25%;
+        }
+        .col-4-of-12 {
+          width: 33.333333333333%;
+        }
+        .col-5-of-12 {
+          width: 41.666666666667%;  
+        }
+        .col-6-of-12 {
+          width: 50%;
+        }
+        .col-7-of-12 {
+          width: 58.333333333333%;
+        }
+        .col-8-of-12 {
+          width: 66.666666666667%;
+        }
+        .col-9-of-12 {
+          width: 75%;
+        }
+        .col-10-of-12 {
+          width: 83.333333333333%;
+        }
+        .col-11-of-12 {
+          width: 91.666666666667%;
+        }
+        .col-12-0f-12 {
+          width: 100%;
+        }
+      }    
+
+      /* demo styling */
+      .col-body {
+        
+      }
+      [class*="col-"] {
+        padding: 0 15px;
+      }
+      .col {
+        text-align: center;
+      }
+      body {
+        background-color: #ccc;
+      }
+      .container {
+        background-color: #fff;
+      }
+      .flat-1 {
+        background-color: #ecf0f1;
+        color: #000;
+      }
+      .flat-2 {
+        background-color: #1abc9c;
+      }
+      .flat-3 {
+        background-color: #2ecc71;
+      }
+      .flat4 {
+        background-color: #3498db;
+      }
+      .flat-5 {
+        background-color: #9b59b6;
+      }
+      .flat-6 {
+        background-color: #34495e;
+      }
+      .flat-7 {
+        background-color: #f1c40f;
+      }
+      .flat-8 {
+        background-color: #f39c12;
+      }
+      .flat-9 {
+        background-color: #e67e22;
+      }
+      .flat-10 {
+        background-color: #d35400;
+      }
+      .flat-11 {
+        background-color: #e74c3c;
+      }
+      .flat-12 {
+        background-color: #c0392b;
+      }
+      .col:nth-child(odd) > h2 {
+        background-color: #f1c40f;
+        padding: 15px 0;
+      }
+      .col:nth-child(even) > h2 {
+        background-color: #f39c12;
+        padding: 15px 0;
+      }
+   </style>
+ </head>
+ <body>
+   <div class="container">
+
+     <div class="row">
+
+       <div class="col col-1-of-12">
+           <h2>1/12</h2>
+       </div>
+
+       <div class="col col-11-of-12">
+           <h2>11/12</h2>
+       </div>
+
+     </div>
+
+     <div class="row">
+
+       <div class="col col-2-of-12">
+           <h2>2/12</h2>
+       </div>
+
+       <div class="col col-10-of-12">
+           <h2>10/12</h2>
+       </div>
+
+     </div>
+
+     <div class="row">
+
+       <div class="col col-3-of-12">
+           <h2>3/12</h2>
+       </div>
+
+       <div class="col col-9-of-12">
+           <h2>9/12</h2>
+       </div>
+
+     </div>
+
+     <div class="row">
+
+       <div class="col col-4-of-12">
+           <h2>4/12</h2>
+       </div>
+
+       <div class="col col-8-of-12">
+           <h2>8/12</h2>
+       </div>
+
+     </div>
+
+     <div class="row">
+
+       <div class="col col-5-of-12">
+           <h2>5/12</h2>
+       </div>
+
+       <div class="col col-7-of-12">
+           <h2>7/12</h2>
+       </div>
+
+     </div>
+
+     <div class="row">
+
+       <div class="col col-6-of-12 med-2">
+           <h2>Halves</h2>
+       </div>
+
+       <div class="col col-6-of-12 med-2">
+           <h2>Halves</h2>
+       </div>
+
+     </div>
+
+     <div class="row">
+       <div class="col col-4-of-12 med-4">
+         <h2>Thirds</h2>
+       </div>
+       <div class="col col-4-of-12 med-4">
+         <h2>Thirds</h2>
+       </div>
+       <div class="col col-4-of-12 med-4">
+         <h2>Thirds</h2>
+       </div>
+     </div>
+
+    <div class="row">
+      <div class="col col-3-of-12 med-3">
+        <h2>Quarters</h2>
+      </div>
+      <div class="col col-3-of-12 med-3">
+        <h2>Quarters</h2>
+      </div>
+      <div class="col col-3-of-12 med-3">
+        <h2>Quarters</h2>
+      </div>
+      <div class="col col-3-of-12 med-3">
+        <h2>Quarters</h2>
+      </div>
+    </div>
+
+   </div>
+ </body>
+ </html> 
