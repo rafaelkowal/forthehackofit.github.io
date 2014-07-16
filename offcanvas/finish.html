@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <title>Off canvas menu with CSS</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700&subset=latin,cyrillic-ext" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 63.5%;
+      font-family: "Roboto Slab", serif;
+      height: 100%;
+    }
+    body {
+      font-size: 1.6rem;
+      line-height: 2.8rem;
+      height: 100%;
+    }
+    .fixed {
+      
+    }
+    .wrapper {
+      height: 100%;
+    }
+    .container {
+      margin: 0 15px;
+    }
+    .row {
+      padding: -15px;
+      margin: 15px 0;
+    }
+    .row:before,
+    .row:after {
+      content: '';
+      display: table;
+    }
+    nav li {
+      padding: 8px;
+    }
+
+    aside {
+      background-color: #333;
+      color: #fff;
+      width: 40%;
+      float: left;
+      margin-left: -40%;
+      height: 100%;
+      position: absolute;
+    }
+
+    section {
+      width: 100%;
+      float: right;
+      margin-right: 0;
+      height: 100%;
+    }
+    .toggle, .biglabel {
+      display: none;
+    }
+    .toggle:checked + .wrapper > aside {
+      margin-left: 0;
+    }
+
+    .toggle:checked + .wrapper > section {
+      margin-right: -40%;
+    }
+
+    .toggle:checked + .wrapper > section .biglabel {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    aside, section {
+      -webkit-width: transition: margin 0.5s ease-in-out;
+      -moz-width: transition: margin 0.5s ease-in-out;
+      -ms-width: transition: margin 0.5s ease-in-out;
+      -o-width: transition: margin 0.5s ease-in-out;
+      width: transition: margin 0.5s ease-in-out;
+      transition: margin 0.5s ease-in-out;
+    }
+
+    .navicon {
+      width: 28px;
+      height: 28px;
+      display: block;
+      background: url('navicon.png') no-repeat;
+      background-size: cover;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="offcanvas" class="toggle" />
+  <div class="wrapper">
+
+    <aside>
+      <nav>
+        <ul>
+          <li>nav_1</li>
+          <li>nav_2</li>
+          <li>nav_3</li>
+          <li>nav_4</li>
+          <li>nav_5</li>
+          <li>nav_6</li>
+          <li>nav_7</li>
+          <li>nav_8</li>
+          <li>nav_9</li>
+          <li>nav_10</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section>
+      <label for="offcanvas" class="biglabel"></label>
+      <div class="container">
+        <div class="row">
+          <label for="offcanvas">
+            <span class="navicon"></span>
+          </label>
+          </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <h2>Lorem ipsum dolor sit amet.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem autem, itaque aperiam quasi atque, unde quibusdam quidem facilis ipsa, esse fugit sequi accusantium, sint aliquam temporibus magni molestias odit ipsum.</p>
+        </div>
+       
+        <div class="row">
+          <h2>Suscipit iusto distinctio optio ratione.</h2>
+          <p>Vero aspernatur dolorem id sapiente, sint facere delectus. Unde sit officia cumque quis, recusandae numquam vero cum dolor quia, nulla perspiciatis repudiandae. Ab nam quaerat voluptates, odio laboriosam rerum, culpa!</p>
+        </div>
+
+        <div class="row">
+          <h2>Nesciunt magni placeat eligendi dolores!</h2>
+          <p>Culpa sint illo animi. Iste animi id quibusdam quasi sit labore eligendi esse voluptas rem qui, perferendis dignissimos sunt. Earum id voluptate delectus quam, doloribus dignissimos ad. Quidem accusantium, architecto.</p>
+        </div>
+
+        <div class="row">
+          <h2>Nulla est esse quae. Ad.</h2>
+          <p>Esse quod cupiditate non incidunt, impedit repudiandae! Nisi dicta repellat error optio inventore illum earum quisquam, debitis nostrum, soluta, repudiandae magni fugiat. Odio obcaecati mollitia reprehenderit, id rerum voluptate? Assumenda.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
