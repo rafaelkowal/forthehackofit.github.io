@@ -252,27 +252,6 @@ var getLatest = schedule.scheduleJob('0 4 * * *', function () {
   
 });
 
-<<<<<<< HEAD
-var dailyPull = agenda.schedule('daily pull', 'get latest', 'person/popular');
-    dailyPull.repeatEvery('0 16 15 * *').save();
-
-var getPopular = agenda.schedule('get movie', 'get movies', 'movie/');
-    getPopular.repeatEvery('1 48 * * *').save();
-
-agenda.start();
-
-agenda.on('start', function(job) {
-  console.log("Job %s starting", job.attrs.name);
-  //console.log(JSON.stringify(job));
-});
-
-agenda.on('complete', function(job) {
-  console.log("Job %s finished", job.attrs.name);
-});
-
-app.set('port', process.env.PORT || 9000);
-=======
->>>>>>> 7e8d102497d21e53a2d97ea600ca38a9f59f2f33
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
