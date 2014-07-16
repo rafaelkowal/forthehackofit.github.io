@@ -10,7 +10,7 @@ var app = express();
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
-mongoose.connect('mongodb://127.0.0.1/stargzr');
+mongoose.connect('mongodb://fth:tru3Gl0bal!!@ds033669.mongolab.com:33669/stargzr');
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 mongoose.set('_debug', true);
@@ -115,13 +115,14 @@ var User = mongoose.model('User', userSchema);
 var Movie = mongoose.model('Movie', movieSchema);
 
 /*** Schedule cron tasks ***/
-var agenda  = require('agenda')({ db: { address: "127.0.0.1:27017/stargzr" } });
+var agenda  = require('agenda')({ db: { address: "mongodb://fth:tru3Gl0bal!!@ds033669.mongolab.com:33669/stargzr" } });
+var schedule = require('node-schedule');
 var _ = require('lodash');
 var apiUrl = "https://api.themoviedb.org/3/",
     apiKey = "d9e6e07490160fe90b54a6609dbde93b";
 
-agenda.define('get movies', {}, function (job, done) {
-  var apiPath = job.attrs.data;
+var getMovies = schedule.scheduleJob('58 3 * * *', function() {
+  var apiPath = 'movie/';
   //Movie.remove({});
   async.waterfall([
     /** get the default movie details **/
@@ -191,16 +192,15 @@ agenda.define('get movies', {}, function (job, done) {
       movie.save(function(err, movie) {
         if (err) return;
       });
-      done();
-    });
+          });
   //);
 });
 
-agenda.define('get latest', { priority: 'high', concurrency: 10 }, function (job, done) {
+var getLatest = schedule.scheduleJob('0 4 * * *', function () {
     async.waterfall([
       /* get the basic start info */
       function (callback) {
-        request(apiUrl+job.attrs.data+'?api_key='+apiKey, function (err, response, body) {
+        request(apiUrl+'person/popular?api_key='+apiKey, function (err, response, body) {
             if (err) return next(err);
             var data = JSON.parse(body);
             //console.log(data);
@@ -248,29 +248,10 @@ agenda.define('get latest', { priority: 'high', concurrency: 10 }, function (job
       star.save(function(err, star) {
         if (err) return;
       });
-      done();
     });
   
 });
 
-var dailyPull = agenda.schedule('daily pull', 'get latest', 'person/popular');
-    dailyPull.repeatEvery('0 16 15 * *').save();
-
-var getPopular = agenda.schedule('get movie', 'get movies', 'movie/');
-    getPopular.repeatEvery('1 48 * * *').save();
-
-//agenda.start();
-
-agenda.on('start', function(job) {
-  console.log("Job %s starting", job.attrs.name);
-  //console.log(JSON.stringify(job));
-});
-
-agenda.on('complete', function(job) {
-  console.log("Job %s finished", job.attrs.name);
-});
-
-app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
