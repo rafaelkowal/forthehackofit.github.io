@@ -259,7 +259,7 @@ var dailyPull = agenda.schedule('daily pull', 'get latest', 'person/popular');
 var getPopular = agenda.schedule('get movie', 'get movies', 'movie/');
     getPopular.repeatEvery('1 48 * * *').save();
 
-//agenda.start();
+agenda.start();
 
 agenda.on('start', function(job) {
   console.log("Job %s starting", job.attrs.name);
@@ -270,7 +270,7 @@ agenda.on('complete', function(job) {
   console.log("Job %s finished", job.attrs.name);
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 9000);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
