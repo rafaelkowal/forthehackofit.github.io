@@ -15,14 +15,24 @@
     }
     .container {
       margin: 30px;
+      position: relative;
     }
     .row {
       padding: 15px 30px;
       margin: 0 -30px;
     }
+    .container:after,
+    .row:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
     .floaters {
-      float: left;
+      display: inline-block;
+      vertical-align: top;
       width: 25%;
+      background-color: #333;
+      color: #fff;
     }
     .floaters > * {
       margin: 15px;
@@ -45,7 +55,7 @@
   </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="container">
       <div class="row">
         <div class="floaters">
           <div class="box">
@@ -61,13 +71,14 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates veniam similique ad quidem, et, magni velit quos possimus, illo illum repellat laudantium iusto totam qui? Facere ad, enim at sit.
             </p>
           </div>
-        </div><div class="floaters imp">
+        </div><div class="floaters">
           <div class="box">
             <h3>Some title 3</h3>
             <p>Deleniti modi nulla quibusdam delectus dolorum at soluta velit illum quisquam quasi consequuntur voluptatibus distinctio, fuga cum enim, dolore perferendis sed corrupti officiis eos veniam et temporibus impedit eveniet. Expedita possimus unde nisi.</p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit dolorum exercitationem blanditiis recusandae quo, accusantium temporibus modi dolores labore tenetur hic, quam fugiat sapiente unde iusto animi alias deserunt sint.
             </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus id odio, voluptatum autem illum.</p>
           </div>
         </div><div class="floaters">
           <div class="box">
@@ -123,8 +134,94 @@
             <h3>Some title 12</h3>
             <p>Error, voluptas, laborum. Obcaecati debitis minima nostrum similique voluptates expedita fuga sit aliquid ad dolorem placeat harum, inventore voluptas ex autem fugiat, quia laborum dolores facere necessitatibus illum in commodi velit unde! A?</p>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
+    <script src='lodash.compat.js'></script>
+    <script>
+      var _floaters = [].slice.call(document.querySelectorAll('.floaters'));
+      var blocks = [], count = 0;
+
+      _floaters.forEach(function (i) {
+          var _block = i.getBoundingClientRect();
+          _block['index'] = count;
+          _block['top'] = parseInt(_block['top'], 10);
+          _block['bottom'] = parseInt(_block['bottom'], 10);
+          _block['topPos'] = 0;
+          blocks.push(_block);
+          count++;
+      });
+
+      var bricks = _.groupBy(blocks, 'top');
+      window.Bricks = bricks;
+      var indexes = _.keys(bricks);
+      var maxCells = _.size(_.max(Bricks, function(b) {return b.length;}));
+      var container = document.getElementById('container');
+      var avWidth = container.getBoundingClientRect().width;
+      var colWidth = Math.floor(_floaters[0].getBoundingClientRect().width);
+      var maxCols = Math.floor(avWidth / colWidth);
+
+      //alert("The container is "+avWidth+" pixels wide and can contain a maximum of "+maxCols+" columns per row");
+
+      var matrix = [];
+      console.log(blocks);
+
+      for(var i = 0, j = indexes.length; i < j; i++) {
+        (function(i) {
+          var  pSet = bricks[indexes[i - 1]],
+               thisSet = bricks[indexes[i]],
+               shortest = _.min(thisSet, 'height'),
+               topPos = 0; 
+
+
+          _(thisSet).forEach( function (b, x) {
+
+              var cssString = " position: absolute;";
+                  cssString += " left: "+(colWidth * x)+"px;";
+              var mt = b['top'];
+              if(!!pSet) {
+                topPos = parseInt(pSet[x]['topPos']);
+                //console.log("top: ", topPos);
+                mt -= pSet[x]['bottom'];
+                //console.log("mt: ",mt);
+                //if (mt > 0) {
+                  b['topPos'] = pSet[x]['height'] + b['height'];
+                //}
+              }
+              else {
+                b['topPos'] = b['height'];
+                console.log("no pSet: "+x+": "+b['topPos']);
+              }
+
+              cssString += " top: "+topPos+"px;";
+              //console.log(x, cssString);
+              _floaters[b['index']].style.cssText += cssString;
+          });
+        })(i);
+      }
+
+      // for(var i = 0, j = indexes.length; i < j; i++) {
+      //   (function(i) {
+      //     var  topSet = bricks[indexes[i - 1]],
+      //          bottomSet = bricks[indexes[i]],
+      //          shortest = _.min(bottomSet, 'height'); 
+      //          console.log(shortest);
+      //     _(topSet).forEach( function (b, x) {
+      //         if(bottomSet[x]['top'] !== b['bottom']) {
+      //           var mt = bottomSet[x]['top'] - b['bottom'];
+      //           console.log(mt, bottomSet[x]);
+      //           //setTimeout(function () {
+      //             _floaters[bottomSet[x].index].style.marginTop = (mt * -1)+'px';
+      //           //}, 3000)
+                
+      //           // bottomSet[x]['top'] = bottomSet[x]['top'] - mt;
+      //           // bottomSet[x]['bottom'] = bottomSet[x]['bottom'] - mt;
+      //         }
+      //     });
+      //   })(i);
+      // }
+      
+      
+    </script>
 </body>
 </html>
