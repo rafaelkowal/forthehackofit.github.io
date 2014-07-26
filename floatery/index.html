@@ -23,19 +23,20 @@
     body {
       line-height: 25px;
       height: 100%;
+      background-color: #e9e9e9;
     }
     img {
       max-width: 100%;
     }
     .container {
-      margin: 30px;
+      margin: 10px;
       position: relative;
       visibility: hidden;
       height: 100%;
     }
     .row {
-      padding: 15px 30px;
-      margin: 0 -30px;
+      padding: 5px 20px;
+      margin: 0 -20px;
     }
     .container:after,
     .row:after {
@@ -46,15 +47,16 @@
     .floaters {
       display: inline-block;
       vertical-align: top;
-      width: 25%;
-      background-color: #333;
-      color: #fff;
+      width: 20%;
+      
     }
-    .floaters > * {
-      margin: 15px;
-      border: 2px solid #ccc;
+    .floaters > .box {
+      margin: 5px;
+      border: 1px solid #dedede;
       padding: 15px;
       vertical-align: top;
+      background-color: #fff;
+      color: #333;
     }
     .imp {
       width: 50%;
@@ -161,6 +163,7 @@
     <script src='lodash.compat.js'></script>
     <script>
       window.addEventListener("load", function(event) {
+       setTimeout( function() { 
         var _floaters = [].slice.call(document.querySelectorAll('.floaters'));
         var blocks = [], count = 0;
 
@@ -222,6 +225,7 @@
           })(i);
         }
         container.style.visibility = "visible";
+      }, 3000);
         // for(var i = 0, j = indexes.length; i < j; i++) {
         //   (function(i) {
         //     var  topSet = bricks[indexes[i - 1]],

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Box Model</title>
+	<style>
+		
+		html, body {
+			height: 100%;
+		}
+		html {
+			background-color: #F8CB9C;
+		}
+		body {
+			width: 960px;
+			margin: 0 auto;
+		}
+		.box {
+			margin: 0 auto;
+			width: 760px;
+			margin: 100px;
+			height: 200px;
+			padding: 25px;
+			border: 5px solid #000;
+			background-color: #8AB3BF;
+			position: relative;
+		}
+		.box:before, .box:after {
+			content: '25';
+			position: absolute;
+			top: 50%;
+		}
+		.box:before {
+			left: 5px;
+		}
+		.box:after {
+			right: 5px;
+		}
+		.box:hover {
+			padding: 40px;
+			background-color: orange;
+			color: #fff;
+		}
+		.box:hover:before, .box:hover:after {
+			content: '40';
+		}
+		.in-box {
+			background-color: #C1CDA9;
+			height: 100%;
+		}
+		.in-box:hover {
+			background: red;
+		}
+		.box, .in-box {
+			-webkit-transition: all 0.5s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+		}
+		.box {
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box-2">
+		<div class="in-box"></div>
+	</div>
+
+	<div class="box">
+		<div class="in-box"></div>
+	</div>
+</body>
+</html>
