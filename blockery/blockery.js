@@ -39,28 +39,35 @@
 
   window.addEventListener('load', function(event) {
     'use strict';
-    
-    var _floaters = [].slice.call(document.querySelectorAll('.floaters'));
-    var blocks = [], count = 0;
 
-    _floaters.forEach(function (i) {
-        var _block = getBoundingClientRect(i);
-        _block['topPos'] = 0;
-        _block['height'] = _block['bottom'] - _block['top'];
-        _block['index'] = count;
-        blocks.push(_block);
+    var container = document.getElementById('container'),
+        blocks = [].slice.call(document.querySelectorAll('.blocks')),
+        boxes = [], 
+        count = 0,
+        bricks,
+        indexes,
+        maxCells,
+        avWidth,
+        colWidth,
+        maxCols;
+
+    blocks.forEach(function (i) {
+        var box = getBoundingClientRect(i);
+        box['topPos'] = 0;
+        box['height'] = box['bottom'] - box['top'];
+        box['index'] = count;
+        boxes.push(box);
         count++;
     });
 
-    var bricks = _.groupBy(blocks, 'top');
-    window.Bricks = bricks;
-    var indexes = _.keys(bricks);
-    var maxCells = _.size(_.max(Bricks, function(b) {return b.length;}));
-    var container = document.getElementById('container');
-    var avWidth = container.getBoundingClientRect().width;
-    var colWidth = Math.floor(_floaters[0].getBoundingClientRect().width);
-    var maxCols = Math.floor(avWidth / colWidth);
-    var matrix = [];
+    /* should probably add a few methods to handle measurements and initial config */
+
+    bricks = _.groupBy(boxes, 'top');
+    indexes = _.keys(bricks);
+    maxCells = _.size(_.max(bricks, function(b) {return b.length;}));
+    avWidth = container.getBoundingClientRect().width;
+    colWidth = Math.floor(blocks[0].getBoundingClientRect().width);
+    maxCols = Math.floor(avWidth / colWidth);
 
     for(var i = 0, j = indexes.length; i < j; i++) {
       (function(i) {
@@ -81,7 +88,7 @@
             }
 
             cssString += " top: "+topPos+"px;";
-            _floaters[b['index']].style.cssText += cssString;
+            blocks[b['index']].style.cssText += cssString;
         });
       })(i);
     }

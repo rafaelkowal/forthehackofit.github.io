@@ -4,89 +4,18 @@
   <meta charset="UTF-8">
   <title>Blockery - Another Take At The Masonry Layout</title>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700&subset=latin,cyrillic-ext" />
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
-    html {
-      font-size: 100%;
-      font-family: "Roboto Slab", serif;
-      height: 100%;
-    }
-    body {
-      line-height: 25px;
-      height: 100%;
-      background-color: #e9e9e9;
-    }
-    img {
-      max-width: 100%;
-    }
-    .container {
-      margin: 10px;
-      position: relative;
-      height: 100%;
-      opacity: 0;
-      -webkit-transition: all 2s linear;
-      -moz-transition: all 2s linear;
-      -ms-transition: all 2s linear;
-      -o-transition: all 2s linear;
-      transition: all 2s linear;
-    }
-    .row {
-      padding: 5px 20px;
-      margin: 0 -20px;
-    }
-    .container:after,
-    .row:after {
-      content: '';
-      display: table;
-      clear: both;
-    }
-    .floaters {
-      display: inline-block;
-      vertical-align: top;
-      width: 20%;
-      
-    }
-    .floaters > .box {
-      margin: 5px;
-      border: 1px solid #dedede;
-      padding: 15px;
-      vertical-align: top;
-      background-color: #fff;
-      color: #333;
-    }
-    .imp {
-      width: 50%;
-      background-color: #333;
-      color: silver;
-    }
-    #container:after { 
-     content: "."; 
-     visibility: hidden; 
-     display: block; 
-     height: 0; 
-     clear: both;
-    }
-  </style>
+  <link rel="stylesheet" href="blockery.css" />
 </head>
 <body>
     <div class="container" id="container">
       <div class="row">
-        <div class="floaters">
+        <div class="blocks">
           <div class="box">
             <h3>Some title 1</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit sapiente eveniet alias numquam, provident, aperiam repudiandae quasi voluptatibus a ex minus, explicabo ad id dolore perferendis maxime earum beatae. Error quos reiciendis minus.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit sapiente eveniet alias numquam, provident, aperiam repudiandae quasi voluptatibus a ex minus, explicabo ad id dolore perferendis maxime earum beatae. Error quos reiciendis minus.</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 2</h3>
             <img src="http://lorempixel.com/400/350?p=2" alt="cat image" alt="" />
@@ -95,7 +24,7 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates veniam similique ad quidem, et, magni velit quos possimus, illo illum repellat laudantium iusto totam qui? Facere ad, enim at sit.
             </p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 3</h3>
             <p>Deleniti modi nulla quibusdam delectus dolorum at soluta velit illum quisquam quasi consequuntur voluptatibus distinctio, fuga cum enim, dolore perferendis sed corrupti officiis eos veniam et temporibus impedit eveniet. Expedita possimus unde nisi.</p>
@@ -104,7 +33,7 @@
             </p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus id odio, voluptatum autem illum.</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 4</h3>
             <img src="http://lorempixel.com/600/900?p=4" alt="cat image" alt="" />
@@ -113,13 +42,13 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, saepe et dignissimos impedit ex, inventore rerum facere dicta excepturi harum commodi soluta quod repellendus fugiat sapiente quisquam rem molestiae recusandae.
             </p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 5</h3>
             <img src="http://lorempixel.com/400/350?p=5" alt="cat image" alt="" />
             <p>Obcaecati ex eum illo ea id reiciendis molestias ullam mollitia, minima, aspernatur pariatur, adipisci ipsum architecto necessitatibus tempore laudantium aliquam! Voluptatum quas placeat, non aliquam hic porro ex sint deserunt nisi quos ipsa.</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 6</h3>
             <img src="http://lorempixel.com/400/350?p=6" alt="cat image" alt="" />
@@ -128,24 +57,24 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse sed eligendi, laudantium voluptas, fugit sint ea quibusdam, autem blanditiis commodi molestias, aperiam quas! Autem consequuntur neque, repudiandae commodi pariatur!
             </p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 7</h3>
             <img src="http://lorempixel.com/400/350?p=7" alt="cat image" alt="" />
             <p>Aliquid quod, placeat delectus nemo magni itaque amet nam ad iste dolorem, repellat possimus dolorum nisi, consequuntur neque, quas. Quia dolor adipisci delectus doloremque, officiis reiciendis quod voluptate cupiditate, aliquid maxime cum, doloribus!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 8</h3>
             <p>Labore animi illo eveniet aliquam est, accusamus saepe obcaecati provident omnis esse repellat atque optio sequi, voluptate nesciunt expedita maxime! Dolorum ipsam corporis laboriosam eveniet aut quas? Temporibus repudiandae, est autem aspernatur optio!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 9</h3>
             <img src="http://lorempixel.com/400/350?p=9" alt="cat image" alt="" />
             <p>Commodi fuga impedit, iure quia unde! Quas sit eligendi, totam optio quidem sapiente molestiae delectus qui voluptates amet! Ratione voluptas molestias ea iusto pariatur ullam repudiandae enim alias perferendis nemo, omnis, aliquam adipisci?</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 10</h3>
 
@@ -154,35 +83,35 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero perferendis quasi molestiae recusandae soluta sint necessitatibus quos facere obcaecati dolores modi illum, fugit incidunt, id. Non soluta maiores doloremque.
             </p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 11</h3>
             <img src="http://lorempixel.com/400/350?p=11" alt="cat image" alt="" />
             <p>Labore animi illo eveniet aliquam est, accusamus saepe obcaecati provident omnis esse repellat atque optio sequi, voluptate nesciunt expedita maxime! Dolorum ipsam corporis laboriosam eveniet aut quas? Temporibus repudiandae, est autem aspernatur optio!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 12</h3>
             <p>Error, voluptas, laborum. Obcaecati debitis minima nostrum similique voluptates expedita fuga sit aliquid ad dolorem placeat harum, inventore voluptas ex autem fugiat, quia laborum dolores facere necessitatibus illum in commodi velit unde! A?</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 13</h3>
             <img src="http://lorempixel.com/400/350?p=13" alt="cat image" alt="" />
             <p>Aliquid quod, placeat delectus nemo magni itaque amet nam ad iste dolorem, repellat possimus dolorum nisi, consequuntur neque, quas. Quia dolor adipisci delectus doloremque, officiis reiciendis quod voluptate cupiditate, aliquid maxime cum, doloribus!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 14</h3>
             <p>Labore animi illo eveniet aliquam est, accusamus saepe obcaecati provident omnis esse repellat atque optio sequi, voluptate nesciunt expedita maxime! Dolorum ipsam corporis laboriosam eveniet aut quas? Temporibus repudiandae, est autem aspernatur optio!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 15</h3>
             <img src="http://lorempixel.com/400/350?p=15" alt="cat image" alt="" />
             <p>Commodi fuga impedit, iure quia unde! Quas sit eligendi, totam optio quidem sapiente molestiae delectus qui voluptates amet! Ratione voluptas molestias ea iusto pariatur ullam repudiandae enim alias perferendis nemo, omnis, aliquam adipisci?</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 16</h3>
 
@@ -191,25 +120,25 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero perferendis quasi molestiae recusandae soluta sint necessitatibus quos facere obcaecati dolores modi illum, fugit incidunt, id. Non soluta maiores doloremque.
             </p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 17</h3>
             <img src="http://lorempixel.com/400/350?p=17" alt="cat image" alt="" />
             <p>Labore animi illo eveniet aliquam est, accusamus saepe obcaecati provident omnis esse repellat atque optio sequi, voluptate nesciunt expedita maxime! Dolorum ipsam corporis laboriosam eveniet aut quas? Temporibus repudiandae, est autem aspernatur optio!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 18</h3>
             <img src="http://lorempixel.com/600/900?p=18" alt="cat image" alt="" />
             <p>Error, voluptas, laborum. Obcaecati debitis minima nostrum similique voluptates expedita fuga sit aliquid ad dolorem placeat harum, inventore voluptas ex autem fugiat, quia laborum dolores facere necessitatibus illum in commodi velit unde! A?</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 19</h3>
             <img src="http://lorempixel.com/400/350?p=19" alt="cat image" alt="" />
             <p>Aliquid quod, placeat delectus nemo magni itaque amet nam ad iste dolorem, repellat possimus dolorum nisi, consequuntur neque, quas. Quia dolor adipisci delectus doloremque, officiis reiciendis quod voluptate cupiditate, aliquid maxime cum, doloribus!</p>
           </div>
-        </div><div class="floaters">
+        </div><div class="blocks">
           <div class="box">
             <h3>Some title 20</h3>
             <p>Labore animi illo eveniet aliquam est, accusamus saepe obcaecati provident omnis esse repellat atque optio sequi, voluptate nesciunt expedita maxime! Dolorum ipsam corporis laboriosam eveniet aut quas? Temporibus repudiandae, est autem aspernatur optio!</p>
