@@ -47,7 +47,7 @@
     .floaters {
       display: inline-block;
       vertical-align: top;
-      width: 20%;
+      width: 33.333333333333%;
       
     }
     .floaters > .box {
@@ -116,6 +116,7 @@
         </div><div class="floaters">
           <div class="box">
             <h3>Some title 6</h3>
+            <img src="http://lorempixel.com/600/450?p=6" alt="cat image" alt="" />
             <p>Quasi eos magni labore repellendus architecto eligendi officiis, eveniet fuga recusandae, nemo dignissimos quam. Accusantium sapiente dolorum ex quisquam, consequatur repellendus dolor, alias adipisci labore rem ut fugit aperiam doloremque, amet non voluptas!</p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione esse sed eligendi, laudantium voluptas, fugit sint ea quibusdam, autem blanditiis commodi molestias, aperiam quas! Autem consequuntur neque, repudiandae commodi pariatur!
@@ -135,6 +136,7 @@
         </div><div class="floaters">
           <div class="box">
             <h3>Some title 9</h3>
+            <img src="http://lorempixel.com/600/450?p=9" alt="cat image" alt="" />
             <p>Commodi fuga impedit, iure quia unde! Quas sit eligendi, totam optio quidem sapiente molestiae delectus qui voluptates amet! Ratione voluptas molestias ea iusto pariatur ullam repudiandae enim alias perferendis nemo, omnis, aliquam adipisci?</p>
           </div>
         </div><div class="floaters">
@@ -171,6 +173,7 @@
         </div><div class="floaters">
           <div class="box">
             <h3>Some title 15</h3>
+            <img src="http://lorempixel.com/600/450?p=15" alt="cat image" alt="" />
             <p>Commodi fuga impedit, iure quia unde! Quas sit eligendi, totam optio quidem sapiente molestiae delectus qui voluptates amet! Ratione voluptas molestias ea iusto pariatur ullam repudiandae enim alias perferendis nemo, omnis, aliquam adipisci?</p>
           </div>
         </div><div class="floaters">
@@ -209,10 +212,34 @@
     </div>
     <script src='lodash.compat.js'></script>
     <script>
-      window.addEventListener("load", function(event) {
+      // usage: log('inside coolFunc',this,arguments);
+      // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
+      window.log = function(){
+        log.history = log.history || [];   // store logs to an array for reference
+        log.history.push(arguments);
+        if(this.console){
+          console.log( Array.prototype.slice.call(arguments) );
+        }
+      };
+
+      var addEvent =  window.attachEvent||window.addEventListener;
+      var event = window.attachEvent ? 'onload' : 'load';
+      window.addEvent(event, function(event) {
        //setTimeout( function() { 
-        var _floaters = [].slice.call(document.querySelectorAll('.floaters'));
+        var _floaters;
         var blocks = [], count = 0;
+
+        try {
+          _floaters = [].slice.call(document.querySelectorAll('.floaters'));
+        }
+        catch (e) {
+          var getFloaters = document.querySelectorAll('.floaters');
+          _floaters = [];
+          _(getFloaters).forEach(function (f) {
+            _floaters.push(f);
+          })
+        }
+        log(_floaters);
 
         function getBoundingClientRect(element){
           var scrollTop = document.documentElement.scrollTop;
@@ -268,7 +295,7 @@
         //alert("The container is "+avWidth+" pixels wide and can contain a maximum of "+maxCols+" columns per row");
 
         var matrix = [];
-        console.log(blocks);
+        log(blocks);
 
         for(var i = 0, j = indexes.length; i < j; i++) {
           (function(i) {
@@ -283,25 +310,14 @@
                     cssString += " left: "+(colWidth * x)+"px;";
                 //var mt = b['top'];
                 if(pSet) {
-                  console.group("pSet / b");
-                    console.log(pSet[x - 1]);
-                    console.log(b);
-                  console.groupEnd();
-                  topPos = parseInt(pSet[x]['topPos']);
-                  //console.log("top: ", topPos);
-                 // mt -= pSet[x]['bottom'];
-                  //console.log("mt: ",mt);
-                  //if (mt > 0) {
-                    b['topPos'] = topPos + b['height'];
-                  //}
+                  b['topPos'] = topPos + b['height'];
                 }
                 else {
                   b['topPos'] = b['height'];
-                  console.log("no pSet: "+x+": "+b['topPos']);
+                  log("no pSet: "+x+": "+b['topPos']);
                 }
 
                 cssString += " top: "+topPos+"px;";
-                //console.log(x, cssString);
                 _floaters[b['index']].style.cssText += cssString;
             });
           })(i);
@@ -313,11 +329,11 @@
         //     var  topSet = bricks[indexes[i - 1]],
         //          bottomSet = bricks[indexes[i]],
         //          shortest = _.min(bottomSet, 'height'); 
-        //          console.log(shortest);
+        //          log(shortest);
         //     _(topSet).forEach( function (b, x) {
         //         if(bottomSet[x]['top'] !== b['bottom']) {
         //           var mt = bottomSet[x]['top'] - b['bottom'];
-        //           console.log(mt, bottomSet[x]);
+        //           log(mt, bottomSet[x]);
         //           //setTimeout(function () {
         //             _floaters[bottomSet[x].index].style.marginTop = (mt * -1)+'px';
         //           //}, 3000)
