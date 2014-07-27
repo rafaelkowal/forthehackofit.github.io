@@ -1,7 +1,7 @@
 {
-  "name": "floatery",
+  "name": "blockery",
   "version": "0.0.0",
-  "description": "A CSS only masonry solution",
+  "description": "Another Take At The Masonry Layout",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
