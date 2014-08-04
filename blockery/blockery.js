@@ -92,7 +92,6 @@
         });
       })(i);
     }
-    container.style.visibility = "visible";
     container.style.opacity = "1";
   });
 })(window);
