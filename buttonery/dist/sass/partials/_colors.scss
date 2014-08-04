@@ -1,0 +1,36 @@
+// color palette
+$darkBrown: rgb(76,65,69);
+$trueBlack: rgb(46,41,46);
+$brightRed: rgb(254,80,90);
+$warmYellow: rgb(255,213,100);
+$faintedGray: rgb(219,222,225);
+$faintedWhite: rgb(245,245,245);
+$darkGray: rgb(150, 155, 159);
+$warmGreen: rgb(143,191,51);
+$warmOrange: rgb(255,151,29);
+// end color palette
+
+// warnings and buttons
+$success_color: $warmGreen;
+$failure_color: $brightRed;
+$warning_color: $warmYellow;
+$action_color: $warmOrange;
+
+$success_border_color: $warmGreen;
+$failure_border_color: rgb(244,42,53);
+$warning_border_color: rgb(255,200,54);
+$action_border_color: $warmOrange;
+
+// text color
+$text_color: $darkBrown;
+
+// background colors
+$darker_bg_color: $darkBrown;
+$dark_bg_color: $darkGray;
+$warmer_bg_color: $brightRed;
+$warm_bg_color: $warmYellow;
+$lighter_bg_color: $faintedWhite;
+$light_bg_color: $faintedGray;
+
+// elements background colors: 
+$nav_bg_color: lighten($trueBlack, 2.05);
