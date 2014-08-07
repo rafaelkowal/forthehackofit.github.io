@@ -41,6 +41,15 @@
 and (min-device-width: 320px)
 and (max-device-width: 480px)
 { 
+  .sm-2 {
+    width: 50%;
+  }
+  .sm-3 {
+    width: 25%;
+  }
+  .sm-4 {
+    width: 33.333333333333%;
+  }
 }
 
 /* iPads (portrait and landscape) ----------- */
@@ -105,3 +114,5 @@ and (min-width : 1024px) {
 [class*="col-"] {
   padding: 0 15px;
 }
+
+s

@@ -1,0 +1,21 @@
+.blocks {
+	width: 16.66666666666667%;
+}
+.box {
+	border-radius: 6px;
+}
+.creditslink {
+	display: block;
+}
+.creditslink > .credit-img {
+	display: inline-block;
+	max-width: 19.82905982906%;
+	padding-right: 10px;
+	vertical-align: top;
+	border-radius: 50%;
+}
+.creditslink > .credit-info {
+	display: inline-block;
+	vertical-align: top;
+	max-width: 80.17094017094%;
+}

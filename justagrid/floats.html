@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Floats</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			width: 1010px;
+			margin: 0 auto;
+		}
+		.box {
+			background-color: orange;
+			padding: 10px;
+			margin-top: 30px;
+		}
+		.box-2 {
+			background-color: yellow;
+		}
+		.inner-box {
+			float: left;
+			background-color: #fff;
+			width: 320px;
+			height: 320px;
+			border: 5px solid #000;
+			margin-right: 10px;
+		}
+		.mid-box {
+			height: 150px;
+			margin-bottom: 10px;	
+		}
+		.q-box {
+			height: 75px;
+			margin-bottom: 10px;	
+		}
+		/*pseudo property :after :before :link :hover*/
+		.box:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box"></div>
+		<div class="inner-box mid-box"></div>
+		<div class="inner-box mid-box"></div>
+		<div class="inner-box q-box"></div>
+		<div class="inner-box q-box"></div>
+		<div class="inner-box q-box"></div>
+		<div class="inner-box q-box"></div>
+	</div>
+
+	<div class="box box-2">
+		<div class="inner-box"></div>
+		<div class="inner-box mid-box"></div>
+		<div class="inner-box mid-box"></div>
+		<div class="inner-box q-box"></div>
+		<div class="inner-box q-box"></div>
+		<div class="inner-box q-box"></div>
+		<div class="inner-box q-box"></div>
+	</div>
+</body>
+</html>
