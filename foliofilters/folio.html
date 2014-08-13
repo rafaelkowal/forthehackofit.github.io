@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Folio filters</title>
+  <style>
+    /* 1.38684210526316 */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 62.5%;
+    }
+    body {
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 400;
+      color: #fff;
+      font-size: 1.6rem;
+      background-color: #fd9;
+    }
+    .tac {
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+    }
+    .tac {
+      text-align: center;
+    }
+    .upper {
+      text-transform: uppercase;
+    }
+    .round {
+      border-radius: 50%;
+    }
+    .container {
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .row {
+      margin: 0 -15px;
+      padding: 3rem 0;
+    }
+    .col {
+      float:left;
+      padding: 0 15px;
+    }
+    .col-3 {
+      width: 25%;
+    }
+    .col-4 {
+      width: 33.33333333333333%;
+    }
+    .col-6 {
+      width: 50%;
+    }
+    .col-12 {
+      width: 100%;
+    }
+    .work {
+      
+    }
+    .work img {
+      border: 5px solid #fff;
+    }
+    :before, :after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .row:after,
+    .col:after,
+    .col:before,
+    .clear:before,
+    .clear:after {
+      content: '';
+      display: table;
+    }
+    /*** SKILLS ***/
+    .skills {
+      margin-top: 8.3rem;
+    }
+    .skill {
+      text-align: center;
+    }
+    .skill-icon {
+      display: block;
+      width: 159px;
+      height: 145px;
+      background: transparent url('images/icons.png') no-repeat;
+      background-size: cover;
+      margin: 0 auto 4rem;
+    }
+    .skill-title {
+      text-transform: uppercase;
+      margin: 2rem 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.2rem;
+    }
+    .icon-crayon {
+      background-position: 0 0;
+    }
+    .icon-flag {
+      background-position: 0 -145px;
+    }
+    .icon-gears {
+      background-position: 0 -290px;
+    }
+    .icon-rocket {
+      background-position: 0 -435px;
+    }
+    /*** SKILLS ***/
+
+    /*** TEAM ***/
+    .team {
+      text-align: center;
+    }
+    .team figure {
+      width: 20rem;
+      margin: 8rem auto 0;
+    }
+    .teamate-name{
+      text-transform: uppercase;
+      color: #27283d;
+      font-weight: 700;
+      margin-top: 4rem;
+    }
+    .teamate-title {
+      color: #30bae7;
+      font-weight: 400;
+      margin-bottom: 3rem;
+    }
+    .social {
+      font-size: 3.2rem;
+      color: #bdd1df;
+    }
+    .onepad {
+      padding: 1rem 0;
+    }
+    .nopad {
+      padding: 0;
+    }
+    /*** TEAM ***/
+
+    .inputfilters {
+      display: none;
+    }
+   
+    .filter {
+      display: inline-block;
+      min-width: 8.4rem;
+      line-height: 3.8rem;
+      background-color: rgba(0,0,0,.08);
+      border-radius: 4px;
+      margin-right: 5px;
+      cursor: pointer;
+      margin-bottom: 50px;
+    }
+
+    .inputfilters:checked + .filter {
+      background-color: #fff;
+    }
+    .foliocontent {
+      
+    }
+    .feedback {
+      margin-bottom: 80px;
+    }
+    .feedback > * {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .feedback > figure {
+      max-width: 19.82905982906%;
+      padding-right: 20px;
+    }
+    .feedback > div {
+      max-width: 80.17094017094%;
+    }
+    .feedback blockquote {
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+    }
+    .feedback .title {
+      color: #ffdd99;
+      font-weight: 400;
+    }
+    section {
+      padding: 3rem 0;
+    }
+    .section-title {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 0.5rem;
+      margin: 0;
+    }
+    .section-summary {
+      margin: 0 auto;
+      text-align: center;
+      width: 65%;
+      font-size: 1.8rem;
+    }
+    .line {
+      width: 87px;
+      height: 4px;
+      opacity: .15;
+      background-color: #000;
+      margin: 1.2rem auto;
+      border: 0;
+      outline: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+    nav li {
+      display: inline-block;
+      text-transform: uppercase;
+      width: 8rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* colors */
+    .theme-color-1 {
+      background-color: #864f9c;
+    }
+    .theme-color-2 {
+      background-color: #16c2a3;
+    }
+    .theme-color-3 {
+      background-color: #e7f1f8;
+      color: #27283d;
+    }
+    .theme-color-4 {
+      background-color: #fff;
+      color: #27283d;
+    }
+    .theme-color-5 {
+      background-color: #fd9;
+      color: #393939;
+    }
+    .theme-color-6 {
+      background-color: #d74580;
+    }
+    .theme-color-7 {
+      background-color: #3c5399;
+    }
+    .theme-color-8 {
+      background-color: #334b8e;;
+    }
+    .logo {
+      width: 25.641025641026%; /* 300 / 1170 */
+      height: 3.7rem;
+      float: left;
+    }
+    .logo a {
+      background: url('images/logo.png') 20% 0 no-repeat;
+      text-indent: 100%;
+      overflow: hidden;
+      display: block;
+      padding-left: 20% ; /* 60 / 300 */;
+    }
+    nav {
+      float: right;
+      width: 74.358974358974%;
+      text-align: right;
+      line-height: 37px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 1px;
+    }
+    nav a:hover {
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #633a79;
+    }
+    .hero {
+      text-align: center;
+      font-size: 3.216rem;
+      font-weight: 700;
+      color: #f7f3ea;
+    }
+    .hero .banner {
+      margin-bottom: 3rem;
+    }
+    .button {
+      min-width: 29rem;
+      line-height: 7rem;
+      border-radius: 4px;
+      text-align: center;
+      text-transform: uppercase;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #eb7d4b;
+      outline: none;
+      border: none;
+      position: relative;
+      color: #fff;
+      font-size: 1.8rem;
+    }
+    .button:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      opacity: .15;
+      background-color: #000;
+      border-radius: 0 0 4px 4px;
+    }
+    .submit {
+      background-color: #2fb9e7;
+    }
+    #canvas .circle {
+      display: inline-block;
+      margin: 1em;
+    }
+    .circles-decimals {
+      font-size: .4em;
+    }
+    .circles-text {
+      font-size: 5rem;
+      font-weight: 300;
+    }
+    .circles-text:after {
+      content: '%';
+      font-size: 3.2rem;
+    }
+    /* sprite icons w=159 h=145 */
+
+    /* form styles */
+    form * {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+    ::-webkit-input-placeholder {
+       color: #fff;
+    }
+    ::-webkit-input-placeholder:after {
+       content: '*';
+       color: red;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: #fff;  
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: #fff;  
+    }
+
+    :-ms-input-placeholder {  
+       color: #fff;  
+    }
+    form input {
+      line-height: 56px;
+      outline: none;
+      border: none;
+      width: 100%;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #273971;
+      padding-left: 20px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 200px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      background-color: #273971;
+      outline: none;
+      border: none;
+      padding: 20px;
+    }
+    .contactlinks li {
+      float: left;
+      min-width: 14.28571428571429%;
+      text-align: center;
+      font-size: 2.4rem;
+    }
+    .contactlinks a:link {
+      color: #fff;
+      text-decoration: none;
+    }
+    .contactlinks a:hover {
+      color: #30bae7;
+    }
+    /* media queries */
+    @media 
+    (-webkit-min-device-pixel-ratio: 2), 
+    (min-resolution: 192dpi) { 
+      /* Retina-specific stuff here */
+      .logo a{
+        background-image: url('images/logo@2x.png');
+        background-size: 118px 37px;
+      }
+    }
+    .folio {
+      overflow: hidden;
+    }
+    .work {
+      opacity: 0;
+      /*height: 0;*/
+      overflow: hidden;
+      /*transition: height 1s ease, opacity 3s linear;*/
+      transition: opacity 0.5s,margin 1s ease-in-out;
+      margin-top: -100%;
+    }
+    
+    #mix:checked ~ .folio > .mix,
+    #apps:checked ~ .folio > .apps,
+    #websites:checked ~ .folio > .web,
+    #ui_kits:checked ~ .folio > .uikits{
+      /*height: auto;
+      
+      display: inline-block;
+      */
+      opacity: 1;
+      transition-delay: 0s;
+      margin-top: 0;
+    }
+    label {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- ******* PORTFOLIO ******* -->
+  <section class="theme-color-5">
+    <div class="container">
+    
+      <div class="row">
+        <div class="foliocontent tac">
+
+          <input type="radio" name="filter" class="inputfilters" id="mix" />
+          <label class="filter" for="mix">All</label>
+        
+          <input type="radio" name="filter" class="inputfilters" id="apps" checked/>
+          <label class="filter" for="apps">Apps</label>
+        
+        
+          <input type="radio" name="filter" class="inputfilters" id="websites"/>
+          <label class="filter" for="websites">Websites</label>
+        
+        
+          <input type="radio" name="filter" class="inputfilters" id="ui_kits"/>
+          <label class="filter" for="ui_kits">UI Kits</label>
+        
+
+
+          <ul class="folio">
+            <li class="col col-4 work mix apps">
+              <figure>
+                <img src="folio/apps/dribbble_radio.png" alt="">
+                <figcaption class="tac upper">Music Player</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix apps">
+              <figure>
+                <img src="folio/apps/musictwofreebie.png" alt="">
+                <figcaption class="tac upper">Music Library</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix uikits">
+              <figure>
+                <img src="folio/uikits/ios-kit.png" alt="">
+                <figcaption class="tac upper">IOS 7 UI Kit</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix web">
+              <figure>
+                <img src="folio/web/surf-drbb.jpg" alt="">
+                <figcaption class="tac upper">Pro Surf Website</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix uikits">
+              <figure>
+                <img src="folio/uikits/beeline.png" alt="">
+                <figcaption class="tac upper">Beeline UI Kit</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix web">
+              <figure>
+                <img src="folio/web/crafty_dribbble.jpg" alt="">
+                <figcaption class="tac upper">Crafty Landing Page</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix apps">
+              <figure>
+                <img src="folio/apps/sparrow.png" alt="">
+                <figcaption class="tac upper">Sparrow Redesign</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix uikits">
+              <figure>
+                <img src="folio/uikits/colorful.jpg" alt="">
+                <figcaption class="tac upper">Colorful UI Kit</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix apps">
+              <figure>
+                <img src="folio/apps/weather.png" alt="">
+                <figcaption class="tac upper">Weather IOS App</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix web">
+              <figure>
+                <img src="folio/web/free_kenzi_web_ui.jpg" alt="">
+                <figcaption class="tac upper">Kenzi Website</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix apps">
+              <figure>
+                <img src="folio/apps/muzik.jpg" alt="">
+                <figcaption class="tac upper">Muzik Web App</figcaption>
+              </figure>
+            </li><li class="col col-4 work mix apps">
+              <figure>
+                <img src="folio/apps/music.png" alt="">
+                <figcaption class="tac upper">Muzik IOS App</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
