@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Folio Filters with CSS</title>
+	<style>
+		.all {
+			display: none;
+		}
+		#all:checked ~ .folio > .all,
+		#cat_1:checked ~ .folio > .cat_1,
+		#cat_2:checked ~ .folio > .cat_2,
+		#cat_3:checked ~ .folio > .cat_3,
+		#cat_4:checked ~ .folio > .cat_4{
+			display: inline-block;
+			width: 25%;
+		}
+		label {
+			cursor: pointer;
+		}
+		/*[class*="cat_"]:visible {
+			display: inline-block;
+			width: 25%;
+			vertical-align: top;
+		}*/
+	</style>
+</head>
+<body>
+	<!--ul.filters>(li>input[type='radio' name="filter" id="cat_$"]+label[for="cat_$"]{cat $})-->
+
+			<input type="radio" name="filter" id="all" checked/>
+			<label for="all">all</label>
+		
+			<input type="radio" name="filter" id="cat_1"/>
+			<label for="cat_1">cat 1</label>
+		
+		
+			<input type="radio" name="filter" id="cat_2"/>
+			<label for="cat_2">cat 2</label>
+		
+		
+			<input type="radio" name="filter" id="cat_3"/>
+			<label for="cat_3">cat 3</label>
+		
+		
+			<input type="radio" name="filter" id="cat_4"/>
+			<label for="cat_4">cat 4</label>
+		
+	<ul class="folio">
+		<li class="all cat_1">
+			<h3>cat 1</h3>
+		</li><li class="all cat_1">
+			<h3>cat 1</h3>
+		</li><li class="all cat_1">
+			<h3>cat 1</h3>
+		</li><li class="all cat_1">
+			<h3>cat 1</h3>
+		</li><li class="all cat_2">
+			<h3>cat 2</h3>
+		</li><li class="all cat_2">
+			<h3>cat 2</h3>
+		</li><li class="all cat_2">
+			<h3>cat 2</h3>
+		</li><li class="all cat_2">
+			<h3>cat 2</h3>
+		</li><li class="all cat_3">
+			<h3>cat 3</h3>
+		</li><li class="all cat_3">
+			<h3>cat 3</h3>
+		</li><li class="all cat_3">
+			<h3>cat 3</h3>
+		</li><li class="all cat_3">
+			<h3>cat 3</h3>
+		</li><li class="all cat_4">
+			<h3>cat 4</h3>
+		</li><li class="all cat_4">
+			<h3>cat 4</h3>
+		</li><li class="all cat_4">
+			<h3>cat 4</h3>
+		</li><li class="all cat_4">
+			<h3>cat 4</h3>
+		</li>
+	</ul>
+</body>
+</html>
