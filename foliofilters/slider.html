@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Coin slider with css</title>
+	<style>
+		.boxes {
+			position: relative;
+			width: 640px;
+			height: 426px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.slides {
+			
+			width: 3200px;
+			height: 426px;
+			transition: transform 1s ease-out;
+
+		}
+		.box {
+			float: left;
+			width: 640px;
+			height: 426px;
+		}
+
+		.black {
+			left: 0;
+			background-color: #000;
+		}
+		.red {
+			left: 640px;
+			background-color: red;
+		}
+		.yellow {
+			left: 1280px;
+			background-color: yellow;
+		}
+		.orange {
+			left: 1920px;
+			background-color: orange;
+		}
+		.purple {
+			left: 2560px;
+			background-color: purple;
+		}
+		/*.rnav:checked ~ .boxes {
+			translate3d(-1 * (calc(attr['data-index']) * 640)px, 0, 0);
+		}*/
+		.black:checked ~ .boxes > .slides {
+			transform: translate3d(0, 0, 0);
+		}
+		.red:checked ~ .boxes > .slides {
+			-webkit-transform: translate3d(-640px, 0, 0);
+		}
+		.yellow:checked ~ .boxes > .slides {
+			transform: translate3d(-1280px, 0, 0);
+		}
+		.orange:checked ~ .boxes > .slides {
+			transform: translate3d(-1920px, 0, 0);
+		}
+		.purple:checked ~ .boxes > .slides {
+			transform: translate3d(-2560px, 0, 0);
+		}
+		
+	</style>
+</head>
+<body>
+	<input type="radio" name="coins" class="rnav black" data-index='0' id="slide_1" checked>
+	<label for="slide_1"></label>
+	<input type="radio" name="coins" class="rnav red" data-index='1' id="slide_2">
+	<label for="slide_2"></label>
+	<input type="radio" name="coins" class="rnav yellow" data-index='2' id="slide_3">
+	<label for="slide_3"></label>
+	<input type="radio" name="coins" class="rnav orange" data-index='3' id="slide_4">
+	<label for="slide_4"></label>
+	<input type="radio" name="coins" class="rnav purple" data-index='4' id="slide_5">
+	<label for="slide_5"></label>
+
+	<div class="boxes">				
+		<div class="slides">
+			<div class="box black"></div>
+			<div class="box red"></div>
+			<div class="box yellow"></div>
+			<div class="box orange"></div>
+			<div class="box purple"></div>
+		</div>
+	</div>
+</body>
+</html>
